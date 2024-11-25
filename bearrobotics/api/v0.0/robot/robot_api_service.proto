@@ -1,0 +1,147 @@
+// File: robot_api_service.proto
+//
+// Copyright 2024 Bear Robotics, Inc. All rights reserved.
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+syntax = "proto3";
+
+import "protos/v0.0/common/annotations.proto";
+import "protos/v0.0/common/math.proto";
+import "protos/v0.0/robot/network.proto";
+import "protos/v0.0/robot/system.proto";
+import "protos/v0.0/robot/robot.proto";
+import "protos/v0.0/robot/status.proto";
+
+package bearrobotics.api.v0.robot;
+
+service RobotAPIService {
+  // Connects to a specified Wi-Fi network.
+  //
+  // SSID should be provided and may be nearby broadcasted networks may be
+  // scanned with ListWifiConnections.
+  rpc ConnectWifi(ConnectWifiRequest)
+    returns (ConnectWifiResponse) {}
+
+  // Get the overall robot system information.
+  //
+  // When called, the server returns robot system information.
+  // The system info tends to be static and does not change often.
+  rpc GetSystemInfo(GetSystemInfoRequest)
+    returns (GetSystemInfoResponse) {}
+
+  // Lists of available and remembered network connections.
+  //
+  // When called, the server returns lists of remembered Wi-Fi networks,
+  // which may not necessarily be available, and returns lists of other
+  // available networks.
+  rpc ListWifiConnections(ListWifiConnectionsRequest)
+    returns (ListWifiConnectionsResponse) {}
+
+  // Subscribe to the robot battery status.
+  //
+  // Upon subscription, the latest known battery status is sent,
+  // followed by updates whenever the battery status changes.
+  rpc SubscribeBatteryStatus(SubscribeBatteryStatusRequest)
+    returns (stream SubscribeBatteryStatusResponse) {}
+
+  // Subscribe to the robot's network status.
+  //
+  // Upon subscription, the server immediately sends the latest known
+  // network status, followed by updates whenever the network status
+  // changes.
+  rpc SubscribeNetworkStatus(SubscribeNetworkStatusRequest)
+    returns (stream SubscribeNetworkStatusResponse) {}
+
+
+  // Subscribe to the robot's odometry status.
+  //
+  // Upon subscription, the server server provides regular updates (5Hz) of 
+  // the odometry status.
+  rpc SubscribeOdometryStatus(SubscribeOdometryStatusRequest) 
+    returns (stream SubscribeOdometryStatusResponse) {}
+
+  // Subscribe to the robot's pose.
+  //
+  // Upon subscription, the server provides regular updates (5Hz) of 
+  // the pose. 
+  rpc SubscribeRobotPose(SubscribeRobotPoseRequest)
+    returns (stream SubscribeRobotPoseResponse) {}
+
+  // Manually drive the robot.
+  //
+  // A fine grained level manual drive control that allows the user to
+  // specify a desired linear and angular velocity. The command will be
+  // smoothed by the robot.
+  // The request message should be streamed at a rate of at least 5Hz for
+  // smooth operation. If the frequency doesn't meet the requirements, it
+  // will set the commanded velocity to zero.
+  rpc DriveRobot(stream DriveRobotRequest)
+    returns (DriveRobotResponse) {}
+}
+
+message ConnectWifiRequest {
+  // SSID of Wi-Fi network.
+  string ssid = 1;
+
+  // Security details for the network.
+  // This field can be omitted if the network is unsecure.
+  optional Authentication authentication = 2;
+
+  // Optional parameters for static IP configuration.
+  optional ConnectionOptions connection_options = 3;
+}
+
+message ConnectWifiResponse {}
+
+message GetSystemInfoRequest {}
+
+message GetSystemInfoResponse {
+  SystemInfo system_info = 1;
+}
+
+message ListWifiConnectionsRequest {}
+
+message ListWifiConnectionsResponse {
+  WifiConnections wifi_connections = 1;
+}
+
+message SubscribeBatteryStatusRequest {
+}
+
+
+message SubscribeBatteryStatusResponse {
+  common.EventMetadata metadata = 1;
+  BatteryState battery_state = 2;
+}
+
+message SubscribeNetworkStatusRequest {}
+
+message SubscribeNetworkStatusResponse {
+  common.EventMetadata metadata = 1;
+  NetworkState network_state = 2;
+}
+
+message SubscribeOdometryStatusRequest {}
+
+message SubscribeOdometryStatusResponse {
+  common.EventMetadata metadata = 1;
+  OdometryState odometry_state = 2;
+}
+
+message SubscribeRobotPoseRequest {
+}
+
+message SubscribeRobotPoseResponse {
+  common.EventMetadata metadata = 1;
+  Pose pose = 2;
+}
+
+message DriveRobotRequest {
+  // The desired max linear and angular velocity to travel.
+  common.Twist twist = 1;
+}
+
+message DriveRobotResponse {}

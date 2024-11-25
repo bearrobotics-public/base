@@ -1,0 +1,106 @@
+// File: network.proto
+//
+// Copyright 2024 Bear Robotics, Inc. All rights reserved.
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+syntax = "proto3";
+
+package bearrobotics.api.v0.robot;
+
+message Authentication {
+  // User provided input for enterprise networks requiring username.
+  // For personal and unsecure networks, username may be omitted.
+  optional string username = 1;
+
+  // User provided input for password input for secure networks.
+  string password = 2;
+}
+
+message ConnectionOptions {
+  // Classless inter-domain routing IP used to configure a static IP.
+  // This should be a static IPv4 address followed by a '/' and suffix.
+  // e.g. '192.168.1.123/24'
+  string cidr_ip = 1;
+
+  // Network gateway that local traffic is routed to. e.g. '192.168.1.1'
+  string gateway_ip = 2;
+
+  // A list of DNS servers to override the DNS resolution provided by the
+  // host network. e.g. ['8.8.8.8', '8.8.4.4']
+  repeated string dns_ips = 3;
+}
+
+message Wifi {
+  // SSID of Wi-Fi network
+  string ssid = 1;
+
+  // Signal strength of the connected Wi-Fi connection
+  // in intervals of 5, within a range of 0 to 100.
+  int32 signal_strength = 2;
+
+  // Secure networks like WPA2/WPA3 will require password
+  // Enterprise networks may require a username as well
+  enum Security {
+    SECURITY_UNKNOWN = 0;
+    // Unsecured network that do not require any authentication
+    SECURITY_UNSECURED = 1;
+    // Password secured network e.g. WPA2, WPA3 and WEP networks
+    SECURITY_PASSWORD_SECURED = 2;
+    // Login required network i.e. Enterprise networks
+    SECURITY_USERNAME_PASSWORD_SECURED = 3;
+  }
+  // Security requirements for the network
+  Security security = 3;
+
+  enum Connection {
+    CONNECTION_UNKNOWN = 0;
+    // Universe > Bear services and network connection are both working
+    CONNECTION_BEAR_CONNECTED = 1;
+    // Internet is connected but universe connection cannot be established
+    CONNECTION_INTERNET_ONLY = 2;
+    // Network is connected but it does not have an internet connection
+    CONNECTION_NO_INTERNET = 3;
+  }
+  // Currently connected Wi-Fi state
+  Connection connected_state = 4;
+}
+
+
+message NetworkState {
+  // State related to the currently connected Wi-Fi.
+  // No connected_wifi indicates that no Wi-Fi network is connected.
+  optional Wifi connected_wifi = 1;
+}
+
+message WifiConnections {
+  // List of remembered Wi-Fi networks (not necessarily available)
+  repeated Wifi saved_networks = 1;
+  // List of other available networks
+  repeated Wifi available_networks = 2;
+}
+
+message WifiInfo {
+  // Currently connected Wi-Fi network's SSID.
+  // This will be empty if the robot is not connected to a network.
+  string current_ssid = 1;
+
+  // Classless inter-domain routing IPv4 address followed by a suffix
+  // representing the number of bits for the subnet mask.
+  // e.g. "192.168.1.123/24"
+  string cidr_ip = 2;
+
+  // Gateway IP to direct local network traffic.
+  // This typically mirrors the first 3 octets in the network IP with
+  // the last octet ending in 1. e.g. "192.168.1.1"
+  string gateway_ip = 3;
+
+  // Unique MAC address for the Wi-Fi interface e.g. "aa:1a:a1:a1:1a:11"
+  string mac_address = 4;
+
+  // A list of DNS servers to override the DNS resolution provided by the
+  // host network. e.g. ['8.8.8.8', '8.8.4.4']
+  repeated string dns_ips = 5;
+}

@@ -1,0 +1,29 @@
+site_name: Bear Base API
+theme:
+  name: 'readthedocs'
+extra_css:
+    - assets/styles.css
+markdown_extensions:
+  - toc:
+      permalink: True
+      toc_depth: 4
+nav:
+  - Home: index.md
+  - API Reference:
+    - v0.0:
+      - Services:
+        - RobotAPIService: v0.0/robot/RobotApiService.md
+      - Message Types:
+        - Common:
+          - Annotations: v0.0/common/Annotations.md
+          - Math: v0.0/common/Math.md
+        - Robot:
+          - Network: v0.0/robot/Network.md
+          - Robot: v0.0/robot/Robot.md
+          - Status: v0.0/robot/Status.md
+          - System: v0.0/robot/System.md
+  - Guides:
+    - Setup:
+      - Network Connectivity: guides/setup/setup_network.md
+      - Examples: guides/setup/examples_python.md
+    - Troubleshooting: guides/troubleshooting.md
