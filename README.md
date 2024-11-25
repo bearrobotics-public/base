@@ -49,3 +49,9 @@ The Bear Base API facilitates communication between third-party clients and robo
 ```bash
 git clone https://github.com/bearrobotics-public/base.git
 cd base
+```
+
+## License
+
+This project is licensed under the Mozilla Public License version 2.0 (MPLv2). See the [LICENSE](./LICENSE) file for details.
+

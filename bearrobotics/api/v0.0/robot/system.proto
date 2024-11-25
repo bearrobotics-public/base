@@ -1,0 +1,45 @@
+// File: system.proto
+//
+// Copyright 2024 Bear Robotics, Inc. All rights reserved.
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+syntax = "proto3";
+
+import "protos/v0.0/robot/network.proto";
+
+package bearrobotics.api.v0.robot;
+
+// Provides information related to the system.
+message SystemInfo {
+  // Distribution version e.g. "servi-24.03"
+  string software_version = 1;
+
+  // Firmware version e.g. "3.2.4.1"
+  string firmware_version = 2;
+
+  enum RobotFamily {
+    ROBOT_FAMILY_UNKNOWN = 0;
+    ROBOT_FAMILY_SERVI = 1;
+    ROBOT_FAMILY_SERVI_MINI = 2;
+    ROBOT_FAMILY_SERVI_PLUS = 3;
+    ROBOT_FAMILY_SERVI_LIFT = 4;
+  }
+  // Robot product family
+  RobotFamily robot_family = 3;
+
+  // Unique robot id e.g. "pennybot-abc123"
+  string robot_id = 4;
+
+  // Display name set for the robot e.g. "Sir V"
+  string display_name = 5;
+
+  // IETF language tag represented in string e.g. "en-US"
+  string locale_language = 6;
+
+  // Various information of the wireless interface and connected Wi-Fi
+  // network.
+  WifiInfo wifi_info = 7;
+}

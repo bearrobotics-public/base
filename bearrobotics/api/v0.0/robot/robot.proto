@@ -1,0 +1,44 @@
+// File: robot.proto
+//
+// Copyright 2024 Bear Robotics, Inc. All rights reserved.
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+syntax = "proto3";
+
+import "protos/v0.0/common/math.proto";
+
+package bearrobotics.api.v0.robot;
+
+// Represents the robot pose.
+message Pose {
+  // x, y coordinates inside the Map relative to the map’s specified
+  // origin.
+  float x_meters = 1;
+  float y_meters = 2;
+
+  // The heading of the robot in radians. Ranges from -PI to PI, with
+  // 0.0 pointing along the x-axis.
+  float heading_radians = 3;
+}
+
+
+message OdometryState {
+  Pose pose = 1;
+
+  // A message containing the linear and angular velocity of the robot.
+  //
+  // A positive linear velocity means the robot is moving forward in the
+  // direction of the Pose.heading, while a negative is opposite of the
+  // Pose.heading.
+  //
+  // A positive angular velocity means the robot is turning clockwise when
+  // looking from above, and negative is counter-clockwise when looking
+  // from above.
+  // 
+  // If twist is 0, i.e. linear and angular velocities are 0, the robot is
+  // stationary.
+  common.Twist twist = 2;
+}
