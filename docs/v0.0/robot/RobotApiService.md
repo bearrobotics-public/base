@@ -599,7 +599,7 @@ This field can be omitted if the network is unsecure.
 #### SubscribeOdometryStatusResponse
   - **Fields:**
     - `metadata` [(EventMetadata)](../../common/Annotations/#eventmetadata): Timestamp and sequence number
-    - `odometry_state` [(OdometryState)](../Robot/#odometry_state): Current odometry information
+    - `odometry_state` [(OdometryState)](../Status/#odometry_state): Current odometry information
 #### SubscribeRobotPoseRequest
   - *(No fields defined)*
 #### SubscribeRobotPoseResponse
