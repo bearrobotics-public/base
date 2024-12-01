@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://bearrobotics-public.github.io/base/v0/robot/RobotApiService/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>RobotAPIService - Bear Base API</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../assets/styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "RobotAPIService";
+        var mkdocs_page_input_path = "v0/robot/RobotApiService.md";
+        var mkdocs_page_url = "/base/v0/robot/RobotApiService/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Bear Base API
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >v0</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" >Services</a>
+    <ul class="current">
+                <li class="toctree-l3 current"><a class="reference internal current" href="#">RobotAPIService</a>
+    <ul class="current">
+    <li class="toctree-l4"><a class="reference internal" href="#connectwifi">ConnectWifi</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#getsysteminfo">GetSystemInfo</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#listwificonnections">ListWifiConnections</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#subscribebatterystatus">SubscribeBatteryStatus</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#subscribenetworkstatus">SubscribeNetworkStatus</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#subscribeodometrystatus">SubscribeOdometryStatus</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#subscriberobotpose">SubscribeRobotPose</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#driverobot">DriveRobot</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Message Types</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" >Common</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../common/Annotations/">Annotations</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../common/Math/">Math</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Robot</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../Network/">Network</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../Robot/">Robot</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../Status/">Status</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../System/">System</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Setup</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../guides/setup/setup_network/">Network Connectivity</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../guides/setup/examples_python/">Examples</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../guides/troubleshooting/">Troubleshooting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Bear Base API</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">v0</li>
+          <li class="breadcrumb-item">Services</li>
+      <li class="breadcrumb-item active">RobotAPIService</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="robotapiservice">RobotAPIService<a class="headerlink" href="#robotapiservice" title="Permanent link">&para;</a></h3>
+<h4 id="connectwifi">ConnectWifi<a class="headerlink" href="#connectwifi" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#connectwifirequest">ConnectWifiRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#connectwifiresponse">ConnectWifiResponse</a></li>
+<li><strong>Description:</strong>
+  Clients can connect the base to an existing Wi-Fi network. <br> To connect to secure networks, <code>Authentication</code> can be set. <br><code>ConnectionOptions</code> can be used if further configuration is needed for the Wi-Fi network.<br>
+  <code>ssid</code> should be provided and nearby broadcasted networks may be scanned with ListWifiConnections.</li>
+</ul>
+<p>**Example: Connecting to Wi-Fi Networks in ASCII Proto Format **
+<br>
+To connect to an open public Wi-Fi network <code>bear_public_wifi</code>:</p>
+<pre><code class="language-plaintext">// Sample Request
+ssid: 'bear_public_wifi'
+</code></pre>
+<pre><code class="language-plaintext">// Sample Response
+{}
+</code></pre>
+<hr />
+<p>To connect to a private Wi-Fi network <code>bear_private_wifi</code> that requires a password:</p>
+<pre><code class="language-plaintext">// Sample Request
+ssid: 'bear_private_wifi'
+authentication {
+  password: 'password_for_private'
+}
+</code></pre>
+<pre><code class="language-plaintext">// Sample Response
+{}
+</code></pre>
+<hr />
+<p><strong>Example: To connect to a private Wi-Fi network <code>bear_private_wifi2</code> that requires a username and password:</strong></p>
+<pre><code class="language-plaintext">// Sample Request
+ssid: 'bear_private_wifi2'
+authentication {
+  username: 'bear_user'
+  password: 'password_for_private2'
+}
+</code></pre>
+<pre><code class="language-plaintext">// Sample Response
+{}
+</code></pre>
+<hr />
+<p><strong>Example: To connect to an open public Wi-Fi network <code>bear_public_wifi2</code> that has a gateway and needs to specify DNS:</strong></p>
+<pre><code class="language-plaintext">// Sample Request
+ssid: 'bear_public_wifi2'
+connection_options {
+  gateway_ip: '192.168.1.1'
+  dns_ips: [ '1.1.1.1', '1.0.0.1', '8.8.8.8', '8.8.4.4' ]
+}
+</code></pre>
+<pre><code class="language-plaintext">// Sample Response
+{}
+</code></pre>
+<hr />
+<h4 id="getsysteminfo">GetSystemInfo<a class="headerlink" href="#getsysteminfo" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#getsysteminforequest">GetSystemInfoRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#getsysteminforesponse">GetSystemInfoResponse</a></li>
+<li><strong>Description:</strong>
+  Get the overall robot system information.<br><br>When called, the server returns robot system information.<br>The system info tends to be static and does not change often.</li>
+</ul>
+<p><strong>Example in ASCII proto format</strong></p>
+<pre><code class="language-plaintext">// Sample Request
+{}
+</code></pre>
+<pre><code class="language-plaintext">// Sample Response
+system_Info {
+  software_version: ‘base-slim-24.11.875;
+  firmware_version: '3.6.0.2'
+  robot_family: ROBOT_FAMILY_SERVI_PLUS
+  robot_id: 'pennybot-xxxxxx'
+  locale_language: 'en'
+  wifi_info {
+    current_ssid: 'bear_demo'
+    cidr_ip: '10.1.30.104/24'
+    gateway_ip: '10.1.30.1'
+    macAddress: 'E4:C7:67:EE:FF:AA'
+    dns_ips: [ '1.1.1.1', '1.0.0.1' ]
+  }
+}
+</code></pre>
+<hr />
+<h4 id="listwificonnections">ListWifiConnections<a class="headerlink" href="#listwificonnections" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#listwificonnectionsrequest">ListWifiConnectionsRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#listwificonnectionsresponse">ListWifiConnectionsResponse</a></li>
+<li><strong>Description:</strong>
+  List all available Wi-Fi networks as well as known Wi-Fi networks.</li>
+</ul>
+<p><strong>Example in ASCII proto format</strong></p>
+<pre><code class="language-plaintext">// Sample Request
+{}
+</code></pre>
+<pre><code class="language-plaintext">// Sample Response
+wifi_connections {
+  saved_networks {
+    ssid: 'bear_test'
+    signal_strength: 90
+    security: SECURITY_PASSWORD_SECURED
+  }
+  saved_networks {
+    ssid: 'bear_public'
+    signal_strength: 87
+    security: SECURITY_UNSECURED
+  }
+  available_networks {
+    ssid: 'bear_demo'
+    signal_strength: 90
+    security: SECURITY_PASSWORD_SECURED
+  }
+  available_networks {
+    ssid: 'public_neighbor'
+    signal_strength: 69
+    security: SECURITY_UNSECURED
+  }
+  available_networks {
+    ssid: 'bear_private'
+    signal_strength: 90
+    security: SECURITY_PASSWORD_SECURED
+  }
+}
+</code></pre>
+<hr />
+<h4 id="subscribebatterystatus">SubscribeBatteryStatus<a class="headerlink" href="#subscribebatterystatus" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#subscribebatterystatusrequest">SubscribeBatteryStatusRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#subscribebatterystatusresponse">SubscribeBatteryStatusResponse</a></li>
+<li><strong>Description:</strong>
+  Subscribe to the robot battery status.<br><br>Upon subscription, the latest known battery status is sent,<br>followed by updates whenever the battery status changes.</li>
+</ul>
+<p><strong>Example in ASCII proto format where base is charging followed by disconnecting the charger</strong></p>
+<pre><code class="language-plaintext">// Sample Request
+{}
+</code></pre>
+<pre><code class="language-plaintext">// Sample Response
+{
+  metadata {
+    timestamp {
+      seconds: 1714313000
+      nanos: 0
+    }
+    sequence_number: 50
+  }
+  battery_state {
+    charge_percent: 99
+    state: STATE_CHARGING
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1714315000
+      nanos: 0
+    }
+    sequence_number: 51
+  }
+  battery_state {
+    charge_percent: 100
+    state: STATE_CHARGING
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1714316000
+      nanos: 0
+    }
+    sequence_number: 52
+  }
+  battery_state {
+    charge_percent: 100
+    state: STATE_DISCHARGING
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1714326000
+      nanos: 0
+    }
+    sequence_number: 53
+  }
+  battery_state {
+    charge_percent: 99
+    state: STATE_DISCHARGING
+  }
+}
+</code></pre>
+<hr />
+<h4 id="subscribenetworkstatus">SubscribeNetworkStatus<a class="headerlink" href="#subscribenetworkstatus" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#subscribenetworkstatusrequest">SubscribeNetworkStatusRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#subscribenetworkstatusresponse">SubscribeNetworkStatusResponse</a></li>
+<li><strong>Description:</strong>
+  Subscribe to the robot's network status.<br><br>Upon subscription, the server immediately sends the latest known<br>network status, followed by updates whenever the network status<br>changes.</li>
+</ul>
+<p><strong>Example in ASCII proto format where initially there is no Wi-Fi connection, then a Wi-Fi is connected, and disconnected again</strong></p>
+<pre><code class="language-plaintext">// Sample Request
+{}
+</code></pre>
+<pre><code class="language-plaintext">// Sample Response
+{
+  metadata {
+    timestamp {
+      seconds: 1732161076001
+      nanos: 740591178
+    }
+    sequence_number: 15
+  }
+  network_state {}
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1732161076101
+      nanos: 1654
+    }
+    sequence_number: 16
+  }
+  network_state {
+    connected_wifi {
+      ssid: 'bear_test'
+      signal_strength: 90
+      security: SECURITY_PASSWORD_SECURED
+    }
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1732161076540
+      nanos: 905178
+    }
+    sequence_number: 17
+  }
+  network_state {}
+}
+</code></pre>
+<hr />
+<h4 id="subscribeodometrystatus">SubscribeOdometryStatus<a class="headerlink" href="#subscribeodometrystatus" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#subscribeodometrystatusrequest">SubscribeOdometryStatusRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#subscribeodometrystatusresponse">SubscribeOdometryStatusResponse</a></li>
+<li><strong>Description:</strong>
+  Subscribe to the robot's odometry status.<br><br>Upon subscription, the server server provides regular updates (5Hz) of <br>the odometry status.</li>
+</ul>
+<p><strong>Example in ASCII proto format</strong></p>
+<pre><code class="language-plaintext">// Sample Request
+{}
+</code></pre>
+<pre><code class="language-plaintext">// Sample Response
+{
+  metadata {
+    timestamp {
+      seconds: 1732363871000
+      nanos: 966690012
+    }
+    sequence_number: 321
+  }
+  odometry_state {
+    pose {
+      x_meters: 0.44569823
+      y_meters: 0.122843966
+      heading_radians: 0.38896447
+    }
+    twist {
+      linear_velocity: 0.04743719
+      angular_velocity: 0.024076527
+    }
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1732363871001
+      nanos: 148576818
+    }
+    sequence_number: 322
+  }
+  odometry_state {
+    pose {
+      x_meters: 0.44870216
+      y_meters: 0.124077715
+      heading_radians: 0.39042783
+    }
+    twist {
+      linear_velocity: 0.00031081674
+      angular_velocity: -0.00031484783
+    }
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1732363871001
+      nanos: 340591393
+    }
+    sequence_number: 323
+  }
+  odometry_state {
+    pose {
+      x_meters: 0.44822562
+      y_meters: 0.12388177
+      heading_radians: 0.3896436
+    }
+    twist {
+      linear_velocity: -8.1940074e-05
+      angular_velocity: -0.00036711502
+    }
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1732363871001
+      nanos: 528572177
+    }
+    sequence_number: 324
+  }
+  odometry_state {
+    pose {
+      x_meters: 0.44822484
+      y_meters: 0.12388145
+      heading_radians: 0.38963988
+    }
+    twist {}
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1732363871001
+      nanos: 768605432
+    }
+    sequence_number: 325
+  }
+  odometry_state {
+    pose {
+      x_meters: 0.44822484
+      y_meters: 0.12388145
+      heading_radians: 0.38963988
+    }
+    twist {}
+  }
+}
+</code></pre>
+<hr />
+<h4 id="subscriberobotpose">SubscribeRobotPose<a class="headerlink" href="#subscriberobotpose" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#subscriberobotposerequest">SubscribeRobotPoseRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#subscriberobotposeresponse">SubscribeRobotPoseResponse</a></li>
+<li><strong>Description:</strong>
+Clients can subscribe to receive robot pose updates.<br><br>Upon subscription, the latest known robot pose is received, followed by updates at 5Hz.</li>
+</ul>
+<p><strong>Example in ASCII proto format</strong></p>
+<pre><code class="language-plaintext">// Sample Request
+{}
+</code></pre>
+<pre><code class="language-plaintext">// Sample Response
+{
+  metadata {
+    timestamp {
+      seconds: 1715262000
+      nanos: 168576818
+    }
+    sequence_number: 175
+  }
+  pose {
+    x_meters: 12.522097
+    y_meters: -5.08858
+    heading_radians: -1.3201984
+  }
+}
+{
+  metadata {
+    timestamp {
+      Seconds: 1715262000
+      nanos: 360591391
+    }
+    sequence_number: 176
+  }
+  pose {
+    x_meters: 12.522099
+    y_meters: -5.088586
+    heading_radians: -1.3201984
+  }
+}
+{
+  metadata {
+    timestamp {
+      Seconds: 1715262000
+      nanos: 549562134
+    }
+    sequence_number: 177
+  }
+  pose {
+    x_meters: 12.522101
+    y_meters: -5.088586
+    heading_radians: -1.3201984
+  }
+}
+</code></pre>
+<hr />
+<h4 id="driverobot">DriveRobot<a class="headerlink" href="#driverobot" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#driverobotrequest">DriveRobotRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#driverobotresponse">DriveRobotResponse</a></li>
+<li><strong>Description:</strong>
+  Manually drive the robot.<br><br>A fine grained level manual drive control that allows the user to<br>specify a desired linear and angular velocity. The command will be<br>smoothed by the robot.<br>The request message should be streamed at a rate of at least 5Hz for<br>smooth operation. If the frequency doesn't meet the requirements, it<br>will set the commanded velocity to zero.</li>
+</ul>
+<p><strong>Example of driving in ASCII proto format</strong>
+Robot drives forward at 0.2 m/s</p>
+<pre><code class="language-plaintext">// Sample Request at 5Hz
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.0
+}
+</code></pre>
+<pre><code class="language-plaintext">// Sample Response
+{}
+</code></pre>
+<p>Robot does an arced right turn at a constant speed of 0.2 m/s</p>
+<pre><code class="language-plaintext">// Sample Request at 5Hz
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.1
+}
+</code></pre>
+<pre><code class="language-plaintext">// Sample Response
+{}
+</code></pre>
+<p>Robot does an arced left turn at a constant speed of -0.2 m/s</p>
+<pre><code class="language-plaintext">// Sample Request at 5Hz
+twist {
+  linear_velocity: 0.2
+  angular_velocity: -0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: -0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: -0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: -0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: -0.1
+}
+</code></pre>
+<pre><code class="language-plaintext">// Sample Response
+{}
+</code></pre>
+<p>Robot accelerating from speed of 0.2 m/s to 0.25 m/s forward</p>
+<pre><code class="language-plaintext">// Sample Request at 5Hz
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.21
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.22
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.23
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.24
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.25
+  angular_velocity: 0.0
+}
+</code></pre>
+<pre><code class="language-plaintext">// Sample Response
+{}
+</code></pre>
+<hr />
+<h3 id="message-types">Message Types<a class="headerlink" href="#message-types" title="Permanent link">&para;</a></h3>
+<h4 id="connectwifirequest">ConnectWifiRequest<a class="headerlink" href="#connectwifirequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>ssid</code> (string): SSID of Wi-Fi network.</li>
+<li><code>authentication</code> <a href="../Network/#authentication">(Authentication)</a>: Security details for the network.
+This field can be omitted if the network is unsecure.</li>
+<li><code>connection_options</code> <a href="../Network/#connectionoptions">(ConnectionOptions)</a>: Optional parameters for static IP configuration.</li>
+</ul>
+</li>
+</ul>
+<h4 id="connectwifiresponse">ConnectWifiResponse<a class="headerlink" href="#connectwifiresponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="driverobotrequest">DriveRobotRequest<a class="headerlink" href="#driverobotrequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>twist</code> <a href="../../common/Math/#twist">(Twist)</a>: The desired max linear and angular velocity to travel.</li>
+</ul>
+</li>
+</ul>
+<h4 id="driverobotresponse">DriveRobotResponse<a class="headerlink" href="#driverobotresponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="getsysteminforequest">GetSystemInfoRequest<a class="headerlink" href="#getsysteminforequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="getsysteminforesponse">GetSystemInfoResponse<a class="headerlink" href="#getsysteminforesponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>system_info</code> <a href="../System/#systeminfo">(SystemInfo)</a>: Robot system details</li>
+</ul>
+</li>
+</ul>
+<h4 id="listwificonnectionsrequest">ListWifiConnectionsRequest<a class="headerlink" href="#listwificonnectionsrequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="listwificonnectionsresponse">ListWifiConnectionsResponse<a class="headerlink" href="#listwificonnectionsresponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>wifi_connections</code> <a href="../Network/#wificonnections">(WifiConnections)</a>: List of saved and available networks</li>
+</ul>
+</li>
+</ul>
+<h4 id="subscribebatterystatusrequest">SubscribeBatteryStatusRequest<a class="headerlink" href="#subscribebatterystatusrequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="subscribebatterystatusresponse">SubscribeBatteryStatusResponse<a class="headerlink" href="#subscribebatterystatusresponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>metadata</code> <a href="../../common/Annotations/#eventmetadata">(EventMetadata)</a>: Timestamp and sequence number</li>
+<li><code>battery_state</code> <a href="../Status/#batterystate">(BatteryState)</a>: Battery and charge information</li>
+</ul>
+</li>
+</ul>
+<h4 id="subscribenetworkstatusrequest">SubscribeNetworkStatusRequest<a class="headerlink" href="#subscribenetworkstatusrequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="subscribenetworkstatusresponse">SubscribeNetworkStatusResponse<a class="headerlink" href="#subscribenetworkstatusresponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>metadata</code> <a href="../../common/Annotations/#eventmetadata">(EventMetadata)</a>: Timestamp and sequence number</li>
+<li><code>network_state</code> <a href="../Network/#networkstate">(NetworkState)</a>: Network status</li>
+</ul>
+</li>
+</ul>
+<h4 id="subscribeodometrystatusrequest">SubscribeOdometryStatusRequest<a class="headerlink" href="#subscribeodometrystatusrequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="subscribeodometrystatusresponse">SubscribeOdometryStatusResponse<a class="headerlink" href="#subscribeodometrystatusresponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>metadata</code> <a href="../../common/Annotations/#eventmetadata">(EventMetadata)</a>: Timestamp and sequence number</li>
+<li><code>odometry_state</code> <a href="../Status/#odometry_state">(OdometryState)</a>: Current odometry information</li>
+</ul>
+</li>
+</ul>
+<h4 id="subscriberobotposerequest">SubscribeRobotPoseRequest<a class="headerlink" href="#subscriberobotposerequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="subscriberobotposeresponse">SubscribeRobotPoseResponse<a class="headerlink" href="#subscriberobotposeresponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>metadata</code> <a href="../../common/Annotations/#eventmetadata">(EventMetadata)</a>: Timestamp and sequence number</li>
+<li><code>pose</code> <a href="../Robot/#pose">(Pose)</a>: Current robot position and orientation</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../.." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../common/Annotations/" class="btn btn-neutral float-right" title="Annotations">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../common/Annotations/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

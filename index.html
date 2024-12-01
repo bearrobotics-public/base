@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" /><link rel="canonical" href="https://bearrobotics-public.github.io/base/" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Bear Base API</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="assets/styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = "/base/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> Bear Base API
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Home</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >v0</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" >Services</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="v0/robot/RobotApiService/">RobotAPIService</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Message Types</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" >Common</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="v0/common/Annotations/">Annotations</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="v0/common/Math/">Math</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Robot</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="v0/robot/Network/">Network</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="v0/robot/Robot/">Robot</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="v0/robot/Status/">Status</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="v0/robot/System/">System</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Setup</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="guides/setup/setup_network/">Network Connectivity</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="guides/setup/examples_python/">Examples</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="guides/troubleshooting/">Troubleshooting</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">Bear Base API</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This document describes the gRPC-based Bear Base API Service for third-party clients. The Bear Base API service enables third parties to:</p>
+<ol>
+<li>Send commands to control the robots</li>
+<li>Receive status updates from robots (e.g., odometry, battery status)</li>
+<li>Retrieve information about the robots</li>
+</ol>
+<p>For a detailed list of API capabilities, please navigate through the <strong>API Reference</strong>. Bear Base API uses the open-source gRPC framework. In the future, corresponding REST APIs will be added.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Third-party clients communicate with the Bear Base API service via <a href="https://grpc.io/docs/what-is-grpc/introduction">gRPC</a>. For request/response type communication, <a href="https://grpc.io/docs/what-is-grpc/core-concepts/#unary-rpc">unary RPC</a> is used. For scenarios where clients need continuous updates from the Bear Base API service, <a href="https://grpc.io/docs/what-is-grpc/core-concepts/#server-streaming-rpc">server streaming RPC</a> is utilized.</p>
+<p>For server streaming RPCs, all responses include metadata containing a timestamp and a sequence number:
+<br>
+- <strong>Timestamp</strong>: The timestamp is based on the local clock where the response was generated and is not globally synchronized, so it should not be used for ordering responses.
+<br>
+- <strong>Sequence Number</strong>: The sequence number is guaranteed to be incremental and can be used to detect duplicate responses. Note that the sequence number may reset to 0 at any time, though this should be rare (e.g., only during a service or robot restart).</p>
+<p>If strict detection of response duplication is desired, both the sequence number and timestamp should be used together. </p>
+<p>Also note the following for streaming RPC queries:
+<br>
+- It will persist for a maximum of 60 minutes, if the query is still needed longer than this time a query must be reissued.
+<br>
+- The messages have delivery guarantees (i.e. QoS) of “<a href="https://en.wikipedia.org/wiki/Best-effort_delivery">best effort</a>” and not “at least once”<sup><a href="#footnote1">1</a></sup>, unless specifically noted. This means that some messages can be dropped and not delivered to clients due to multiple reasons such as, but not limited to, packet loss, network traffic load, and processing failures.</p>
+<hr />
+<p><a name="footnote1">1</a>: A message will be delivered to the client at least one time, and it might be delivered multiple times due to network issues or processing failures.
+<br>
+- As noted above, clients need to handle duplicate messages.</p>
+<p>When a gRPC call completes successfully, the server returns an OK status along with the specified response to the client. If an error occurs, gRPC returns an <a href="https://grpc.io/docs/guides/error/#error-status-codes">error status code</a> and an error message.</p>
+<h2 id="message-encoding">Message Encoding<a class="headerlink" href="#message-encoding" title="Permanent link">&para;</a></h2>
+<p>gRPC uses <a href="https://protobuf.dev/">Protocol Buffers</a> which provide a serialization format for encoding and decoding, as 
+ well as Interface  Definition  Language</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="v0/robot/RobotApiService/" class="btn btn-neutral float-right" title="RobotAPIService">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="v0/robot/RobotApiService/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2024-12-01 16:40:59.973163+00:00
+-->
