@@ -64,5 +64,5 @@ If the ping transmits successful packets, then you can now communicate with BRAS
 
 #### Connecting to WiFi
 
-Internet connection is required to connect to Universe (Bear's fleet management system). You can use [ConnectWifi](../../../v0.0/robot/RobotApiService/#connectwifi) to set the network.
+Internet connection is required to connect to Universe (Bear's fleet management system). You can use [ConnectWifi](../../../v0/robot/RobotApiService/#connectwifi) to set the network.
 
