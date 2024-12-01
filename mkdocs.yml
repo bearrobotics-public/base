@@ -1,4 +1,5 @@
 site_name: Bear Base API
+site_url: https://bearrobotics-public.github.io/base/
 theme:
   name: 'readthedocs'
 extra_css:
@@ -10,18 +11,18 @@ markdown_extensions:
 nav:
   - Home: index.md
   - API Reference:
-    - v0.0:
+    - v0:
       - Services:
-        - RobotAPIService: v0.0/robot/RobotApiService.md
+        - RobotAPIService: v0/robot/RobotApiService.md
       - Message Types:
         - Common:
-          - Annotations: v0.0/common/Annotations.md
-          - Math: v0.0/common/Math.md
+          - Annotations: v0/common/Annotations.md
+          - Math: v0/common/Math.md
         - Robot:
-          - Network: v0.0/robot/Network.md
-          - Robot: v0.0/robot/Robot.md
-          - Status: v0.0/robot/Status.md
-          - System: v0.0/robot/System.md
+          - Network: v0/robot/Network.md
+          - Robot: v0/robot/Robot.md
+          - Status: v0/robot/Status.md
+          - System: v0/robot/System.md
   - Guides:
     - Setup:
       - Network Connectivity: guides/setup/setup_network.md

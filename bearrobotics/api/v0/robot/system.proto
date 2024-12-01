@@ -8,7 +8,7 @@
 
 syntax = "proto3";
 
-import "protos/v0.0/robot/network.proto";
+import "protos/v0/robot/network.proto";
 
 package bearrobotics.api.v0.robot;
 
