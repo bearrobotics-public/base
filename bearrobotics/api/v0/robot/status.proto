@@ -1,13 +1,14 @@
 // File: status.proto
 //
 // Copyright 2024 Bear Robotics, Inc. All rights reserved.
-//
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 syntax = "proto3";
 
+import "bearrobotics/api/v0/robot/robot.proto";
+import "bearrobotics/api/v0/common/math.proto";
 
 package bearrobotics.api.v0.robot;
 
@@ -24,7 +25,6 @@ message BatteryState {
   State state = 2;
 }
 
-
 message OdometryState {
   Pose pose = 1;
 
@@ -37,7 +37,7 @@ message OdometryState {
   // A positive angular velocity means the robot is turning clockwise when
   // looking from above, and negative is counter-clockwise when looking
   // from above.
-  // 
+  //
   // If twist is 0, i.e. linear and angular velocities are 0, the robot is
   // stationary.
   common.Twist twist = 2;
