@@ -26,7 +26,7 @@ message BatteryState {
 }
 
 message OdometryState {
-  robot.Pose pose = 1;
+  Pose pose = 1;
 
   // A message containing the linear and angular velocity of the robot.
   //
