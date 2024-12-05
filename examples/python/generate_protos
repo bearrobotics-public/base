@@ -1,0 +1,10 @@
+#! /bin/sh
+
+REPO_ROOT=$(git rev-parse --show-toplevel)
+cd "$REPO_ROOT"
+
+PROTO_OUT="examples/python/generated_protos"
+mkdir -p "$PROTO_OUT"
+
+# Make sure you install grpcio-tools first by running `pip install grpcio-tools`
+python3 -m grpc_tools.protoc -I . --python_out="$PROTO_OUT" --grpc_python_out="$PROTO_OUT" bearrobotics/api/v0/**/*.proto
