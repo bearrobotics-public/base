@@ -1,8 +1,8 @@
 load("@rules_python//python:defs.bzl", "py_binary")
 
 py_binary(
-    name = "manual_drive",
-    srcs = ["manual_drive.py"],
+    name = "drive_robot",
+    srcs = ["drive_robot.py"],
     deps = [
         "//bearrobotics/api/v0/common:annotations_py_proto",
         "//bearrobotics/api/v0/common:math_py_proto",
