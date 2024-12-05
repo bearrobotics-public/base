@@ -1,6 +1,7 @@
 import grpc
-from bearrobotics.api.v0.robot import robot_api_service_pb2_grpc
+
 from bearrobotics.api.v0.robot import robot_api_service_pb2
+from bearrobotics.api.v0.robot import robot_api_service_pb2_grpc
 
 ROBOT_IP = "10.10.127.2"
 ROBOT_API_SERVER_PORT = 5123
