@@ -8,8 +8,6 @@
 
 syntax = "proto3";
 
-import "protos/v0/common/math.proto";
-
 package bearrobotics.api.v0.robot;
 
 // Represents the robot pose.

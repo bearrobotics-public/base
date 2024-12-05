@@ -8,12 +8,12 @@
 
 syntax = "proto3";
 
-import "protos/v0/common/annotations.proto";
-import "protos/v0/common/math.proto";
-import "protos/v0/robot/network.proto";
-import "protos/v0/robot/system.proto";
-import "protos/v0/robot/robot.proto";
-import "protos/v0/robot/status.proto";
+import "bearrobotics/api/v0/common/annotations.proto";
+import "bearrobotics/api/v0/common/math.proto";
+import "bearrobotics/api/v0/robot/network.proto";
+import "bearrobotics/api/v0/robot/system.proto";
+import "bearrobotics/api/v0/robot/robot.proto";
+import "bearrobotics/api/v0/robot/status.proto";
 
 package bearrobotics.api.v0.robot;
 
@@ -22,15 +22,13 @@ service RobotAPIService {
   //
   // SSID should be provided and may be nearby broadcasted networks may be
   // scanned with ListWifiConnections.
-  rpc ConnectWifi(ConnectWifiRequest)
-    returns (ConnectWifiResponse) {}
+  rpc ConnectWifi(ConnectWifiRequest) returns (ConnectWifiResponse) {}
 
   // Get the overall robot system information.
   //
   // When called, the server returns robot system information.
   // The system info tends to be static and does not change often.
-  rpc GetSystemInfo(GetSystemInfoRequest)
-    returns (GetSystemInfoResponse) {}
+  rpc GetSystemInfo(GetSystemInfoRequest) returns (GetSystemInfoResponse) {}
 
   // Lists of available and remembered network connections.
   //
@@ -38,14 +36,14 @@ service RobotAPIService {
   // which may not necessarily be available, and returns lists of other
   // available networks.
   rpc ListWifiConnections(ListWifiConnectionsRequest)
-    returns (ListWifiConnectionsResponse) {}
+      returns (ListWifiConnectionsResponse) {}
 
   // Subscribe to the robot battery status.
   //
   // Upon subscription, the latest known battery status is sent,
   // followed by updates whenever the battery status changes.
   rpc SubscribeBatteryStatus(SubscribeBatteryStatusRequest)
-    returns (stream SubscribeBatteryStatusResponse) {}
+      returns (stream SubscribeBatteryStatusResponse) {}
 
   // Subscribe to the robot's network status.
   //
@@ -53,22 +51,21 @@ service RobotAPIService {
   // network status, followed by updates whenever the network status
   // changes.
   rpc SubscribeNetworkStatus(SubscribeNetworkStatusRequest)
-    returns (stream SubscribeNetworkStatusResponse) {}
-
+      returns (stream SubscribeNetworkStatusResponse) {}
 
   // Subscribe to the robot's odometry status.
   //
-  // Upon subscription, the server server provides regular updates (5Hz) of 
+  // Upon subscription, the server server provides regular updates (5Hz) of
   // the odometry status.
-  rpc SubscribeOdometryStatus(SubscribeOdometryStatusRequest) 
-    returns (stream SubscribeOdometryStatusResponse) {}
+  rpc SubscribeOdometryStatus(SubscribeOdometryStatusRequest)
+      returns (stream SubscribeOdometryStatusResponse) {}
 
   // Subscribe to the robot's pose.
   //
-  // Upon subscription, the server provides regular updates (5Hz) of 
-  // the pose. 
+  // Upon subscription, the server provides regular updates (5Hz) of
+  // the pose.
   rpc SubscribeRobotPose(SubscribeRobotPoseRequest)
-    returns (stream SubscribeRobotPoseResponse) {}
+      returns (stream SubscribeRobotPoseResponse) {}
 
   // Manually drive the robot.
   //
@@ -78,8 +75,7 @@ service RobotAPIService {
   // The request message should be streamed at a rate of at least 5Hz for
   // smooth operation. If the frequency doesn't meet the requirements, it
   // will set the commanded velocity to zero.
-  rpc DriveRobot(stream DriveRobotRequest)
-    returns (DriveRobotResponse) {}
+  rpc DriveRobot(stream DriveRobotRequest) returns (DriveRobotResponse) {}
 }
 
 message ConnectWifiRequest {
@@ -108,9 +104,7 @@ message ListWifiConnectionsResponse {
   WifiConnections wifi_connections = 1;
 }
 
-message SubscribeBatteryStatusRequest {
-}
-
+message SubscribeBatteryStatusRequest {}
 
 message SubscribeBatteryStatusResponse {
   common.EventMetadata metadata = 1;
@@ -131,8 +125,7 @@ message SubscribeOdometryStatusResponse {
   OdometryState odometry_state = 2;
 }
 
-message SubscribeRobotPoseRequest {
-}
+message SubscribeRobotPoseRequest {}
 
 message SubscribeRobotPoseResponse {
   common.EventMetadata metadata = 1;

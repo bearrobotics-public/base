@@ -68,7 +68,6 @@ message Wifi {
   Connection connected_state = 4;
 }
 
-
 message NetworkState {
   // State related to the currently connected Wi-Fi.
   // No connected_wifi indicates that no Wi-Fi network is connected.
