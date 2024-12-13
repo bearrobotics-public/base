@@ -12,6 +12,8 @@ The Bear Base API Service is a gRPC-based API for third-party clients to:
 
 For a comprehensive overview of the API capabilities, refer to the **Public Base API** documentation website. While currently using gRPC, future plans include adding corresponding REST APIs.
 
+See [API Reference](https://bearrobotics-public.github.io/base/)
+
 ---
 
 ## Overview
@@ -42,6 +44,7 @@ The Bear Base API facilitates communication between third-party clients and robo
 
 ## Getting Started
 ### Prerequisites
+- **A robot base**: For details and how to get one, [visit our website](https://www.bearrobotics.ai/base).
 - **gRPC Framework**: Ensure your development environment supports gRPC.
 - **Protocol Buffers Compiler**: Install `protoc` for compiling `.proto` files into your desired language.
 
@@ -50,6 +53,11 @@ The Bear Base API facilitates communication between third-party clients and robo
 git clone https://github.com/bearrobotics-public/base.git
 cd base
 ```
+
+### Compile & Develop
+The [API Reference](https://bearrobotics-public.github.io/base/v0/robot/RobotApiService/) has documentation for available API.
+
+Client code generation instructions and usage examples for Python can be found [HERE](https://bearrobotics-public.github.io/base/guides/setup/examples_python/)
 
 ## License
 
