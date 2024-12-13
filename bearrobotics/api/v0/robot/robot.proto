@@ -10,6 +10,26 @@ syntax = "proto3";
 
 package bearrobotics.api.v0.robot;
 
+import "bearrobotics/api/v0/common/math.proto";
+
+message OdometryState {
+  Pose pose = 1;
+
+  // A message containing the linear and angular velocity of the robot.
+  //
+  // A positive linear velocity means the robot is moving forward in the
+  // direction of the Pose.heading, while a negative is opposite of the
+  // Pose.heading.
+  //
+  // A positive angular velocity means the robot is turning clockwise when
+  // looking from above, and negative is counter-clockwise when looking
+  // from above.
+  //
+  // If twist is 0, i.e. linear and angular velocities are 0, the robot is
+  // stationary.
+  common.Twist twist = 2;
+}
+
 // Represents the robot pose.
 message Pose {
   // x, y coordinates inside the Map relative to the map’s specified
