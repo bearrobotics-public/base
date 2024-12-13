@@ -34,37 +34,43 @@ message ConnectionOptions {
 }
 
 message Wifi {
-  // SSID of Wi-Fi network
+  // SSID of Wi-Fi network.
   string ssid = 1;
 
-  // Signal strength of the connected Wi-Fi connection
+  // Signal strength of the connected Wi-Fi connection.
   // in intervals of 5, within a range of 0 to 100.
   int32 signal_strength = 2;
 
-  // Secure networks like WPA2/WPA3 will require password
-  // Enterprise networks may require a username as well
+  // Secure networks like WPA2/WPA3 will require password.
+  // Enterprise networks may require a username as well.
   enum Security {
     SECURITY_UNKNOWN = 0;
-    // Unsecured network that do not require any authentication
+
+    // Unsecured network that do not require any authentication.
     SECURITY_UNSECURED = 1;
-    // Password secured network e.g. WPA2, WPA3 and WEP networks
+
+    // Password secured network. e.g. WPA2, WPA3 and WEP networks
     SECURITY_PASSWORD_SECURED = 2;
-    // Login required network i.e. Enterprise networks
+
+    // Login required network. i.e. Enterprise networks
     SECURITY_USERNAME_PASSWORD_SECURED = 3;
   }
-  // Security requirements for the network
+  // Security requirements for the network.
   Security security = 3;
 
   enum Connection {
     CONNECTION_UNKNOWN = 0;
-    // Universe > Bear services and network connection are both working
+
+    // Universe > Bear services and network connection are both working.
     CONNECTION_BEAR_CONNECTED = 1;
-    // Internet is connected but universe connection cannot be established
+
+    // Internet is connected but universe connection cannot be established.
     CONNECTION_INTERNET_ONLY = 2;
-    // Network is connected but it does not have an internet connection
+
+    // Network is connected but it does not have an internet connection.
     CONNECTION_NO_INTERNET = 3;
   }
-  // Currently connected Wi-Fi state
+  // Currently connected Wi-Fi state.
   Connection connected_state = 4;
 }
 
@@ -75,9 +81,9 @@ message NetworkState {
 }
 
 message WifiConnections {
-  // List of remembered Wi-Fi networks (not necessarily available)
+  // List of remembered Wi-Fi networks. (not necessarily available)
   repeated Wifi saved_networks = 1;
-  // List of other available networks
+  // List of other available networks.
   repeated Wifi available_networks = 2;
 }
 
@@ -96,7 +102,7 @@ message WifiInfo {
   // the last octet ending in 1. e.g. "192.168.1.1"
   string gateway_ip = 3;
 
-  // Unique MAC address for the Wi-Fi interface e.g. "aa:1a:a1:a1:1a:11"
+  // Unique MAC address for the Wi-Fi interface. e.g. "aa:1a:a1:a1:1a:11"
   string mac_address = 4;
 
   // A list of DNS servers to override the DNS resolution provided by the

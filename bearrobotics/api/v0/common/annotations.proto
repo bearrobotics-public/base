@@ -8,9 +8,9 @@
 
 syntax = "proto3";
 
-import "google/protobuf/timestamp.proto";
-
 package bearrobotics.api.v0.common;
+
+import "google/protobuf/timestamp.proto";
 
 message EventMetadata {
   // The time when the event was recorded.

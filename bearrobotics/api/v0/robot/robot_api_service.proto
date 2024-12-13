@@ -8,21 +8,36 @@
 
 syntax = "proto3";
 
-import "bearrobotics/api/v0/common/annotations.proto";
-import "bearrobotics/api/v0/common/math.proto";
-import "bearrobotics/api/v0/robot/network.proto";
-import "bearrobotics/api/v0/robot/system.proto";
-import "bearrobotics/api/v0/robot/robot.proto";
-import "bearrobotics/api/v0/robot/status.proto";
-
 package bearrobotics.api.v0.robot;
 
+import "bearrobotics/api/v0/common/annotations.proto";
+import "bearrobotics/api/v0/common/math.proto";
+import "bearrobotics/api/v0/map/map.proto";
+import "bearrobotics/api/v0/robot/network.proto";
+import "bearrobotics/api/v0/robot/robot.proto";
+import "bearrobotics/api/v0/robot/settings.proto";
+import "bearrobotics/api/v0/robot/status.proto";
+import "bearrobotics/api/v0/robot/system.proto";
+
 service RobotAPIService {
-  // Connects to a specified Wi-Fi network.
+  // Connect to a specified Wi-Fi network.
   //
   // SSID should be provided and may be nearby broadcasted networks may be
   // scanned with ListWifiConnections.
   rpc ConnectWifi(ConnectWifiRequest) returns (ConnectWifiResponse) {}
+
+  // Manually drive the robot.
+  //
+  // A fine grained level manual drive control that allows the user to
+  // specify a desired linear and angular velocity. The command will be
+  // smoothed by the robot.
+  // The request message should be streamed at a rate of at least 5Hz for
+  // smooth operation. If the frequency doesn't meet the requirements, it
+  // will set the commanded velocity to zero.
+  rpc DriveRobot(stream DriveRobotRequest) returns (DriveRobotResponse) {}
+
+  // Retrieve the current map content data loaded on the robot.
+  rpc GetMapContent(GetMapContentRequest) returns (GetMapContentResponse) {}
 
   // Get the overall robot system information.
   //
@@ -30,7 +45,7 @@ service RobotAPIService {
   // The system info tends to be static and does not change often.
   rpc GetSystemInfo(GetSystemInfoRequest) returns (GetSystemInfoResponse) {}
 
-  // Lists of available and remembered network connections.
+  // List of available and remembered network connections.
   //
   // When called, the server returns lists of remembered Wi-Fi networks,
   // which may not necessarily be available, and returns lists of other
@@ -38,12 +53,50 @@ service RobotAPIService {
   rpc ListWifiConnections(ListWifiConnectionsRequest)
       returns (ListWifiConnectionsResponse) {}
 
+  // Localize the robot to a localization goal.
+  //
+  // If the goal is accepted, subcribe to SubscribeLocalizationStatus
+  // to get the localization status.
+  rpc LocalizeRobot(LocalizeRobotRequest) returns (LocalizeRobotResponse) {}
+
+  // Executes a system command on the robot.
+  //
+  // Running system command, it can initiate robot reboot.
+  // New system-level commands will be added in the future.
+  rpc RunSystemCommand(RunSystemCommandRequest)
+      returns (RunSystemCommandResponse) {}
+
+  // Enable or disable the emergency stop.
+  rpc SetEmergencyStop (SetEmergencyStopRequest)
+      returns (SetEmergencyStopResponse) {}
+
+  // Set a specified setting.
+  //
+  // The request will be rejected if the setting key does not exists.
+  // TODO: Add API reference to available settings.
+  rpc SetSetting(SetSettingRequest) returns (SetSettingResponse) {}
+
   // Subscribe to the robot battery status.
   //
   // Upon subscription, the latest known battery status is sent,
   // followed by updates whenever the battery status changes.
   rpc SubscribeBatteryStatus(SubscribeBatteryStatusRequest)
       returns (stream SubscribeBatteryStatusResponse) {}
+
+  // Subscribe to the software emergency stop state.
+  //
+  // Upon subscription, the server sends the current emergency stop state,
+  // followed by updates whenever the emergency stop state changes.
+  rpc SubscribeEmergencyStopStatus (SubscribeEmergencyStopStatusRequest)
+      returns (stream SubscribeEmergencyStopStatusResponse) {}
+
+
+  // Subscibe to the localization status of the robot.
+  //
+  // Upon subscription, the latest known localization status will be sent.
+  // If the robot is actively localizing, status will be published upon changes.
+  rpc SubscribeLocalizationStatus(SubscribeLocalizationStatusRequest)
+      returns (stream SubscribeLocalizationStatusResponse) {}
 
   // Subscribe to the robot's network status.
   //
@@ -60,6 +113,20 @@ service RobotAPIService {
   rpc SubscribeOdometryStatus(SubscribeOdometryStatusRequest)
       returns (stream SubscribeOdometryStatusResponse) {}
 
+  // Subscribe to the robots's operation status.
+  //
+  // Upon subscription, the server immediately sends the latest known operation
+  // status, followed by updates whenever the operation status changes.
+  rpc SubscribeOperationStatus(SubscribeOperationStatusRequest)
+      returns (stream SubscribeOperationStatusResponse) {}
+
+  // Subscibe to the robot's latest settings.
+  //
+  // Upon subscription, the latest setting states will be sent. For every
+  // setting change, a full snapshot of the states will be sent.
+  rpc SubscribeSettings(SubscribeSettingsRequest)
+      returns (stream SubscribeSettingsResponse) {}
+
   // Subscribe to the robot's pose.
   //
   // Upon subscription, the server provides regular updates (5Hz) of
@@ -67,15 +134,10 @@ service RobotAPIService {
   rpc SubscribeRobotPose(SubscribeRobotPoseRequest)
       returns (stream SubscribeRobotPoseResponse) {}
 
-  // Manually drive the robot.
+  // Switch the current map to a specified map.
   //
-  // A fine grained level manual drive control that allows the user to
-  // specify a desired linear and angular velocity. The command will be
-  // smoothed by the robot.
-  // The request message should be streamed at a rate of at least 5Hz for
-  // smooth operation. If the frequency doesn't meet the requirements, it
-  // will set the commanded velocity to zero.
-  rpc DriveRobot(stream DriveRobotRequest) returns (DriveRobotResponse) {}
+  // A corresponding map's floor level and section index should be provided.
+  rpc SwitchMap(SwitchMapRequest) returns (SwitchMapResponse) {}
 }
 
 message ConnectWifiRequest {
@@ -92,6 +154,13 @@ message ConnectWifiRequest {
 
 message ConnectWifiResponse {}
 
+message GetMapContentRequest {
+}
+
+message GetMapContentResponse {
+  v0.map.MapContent map_content = 1;
+}
+
 message GetSystemInfoRequest {}
 
 message GetSystemInfoResponse {
@@ -104,11 +173,49 @@ message ListWifiConnectionsResponse {
   WifiConnections wifi_connections = 1;
 }
 
+message LocalizeRobotRequest {
+  v0.robot.LocalizationGoal goal = 1;
+}
+
+message LocalizeRobotResponse {}
+
+message RunSystemCommandRequest {
+  SystemCommand system_command = 1;
+}
+
+message RunSystemCommandResponse {}
+
+message SetEmergencyStopRequest {
+  robot.EmergencyStopState e_stop_state = 1;
+}
+
+message SetEmergencyStopResponse {}
+
+message SetSettingRequest {
+  Setting setting = 1;
+}
+
+message SetSettingResponse {}
+
 message SubscribeBatteryStatusRequest {}
 
 message SubscribeBatteryStatusResponse {
   common.EventMetadata metadata = 1;
   BatteryState battery_state = 2;
+}
+
+message SubscribeEmergencyStopStatusRequest {}
+
+message SubscribeEmergencyStopStatusResponse {
+  common.EventMetadata metadata = 1;
+  robot.EmergencyStopState e_stop_state = 2;
+}
+
+message SubscribeLocalizationStatusRequest {}
+
+message SubscribeLocalizationStatusResponse {
+  common.EventMetadata metadata = 1;
+  v0.robot.LocalizationState localization_state = 2;
 }
 
 message SubscribeNetworkStatusRequest {}
@@ -125,11 +232,34 @@ message SubscribeOdometryStatusResponse {
   OdometryState odometry_state = 2;
 }
 
+message SubscribeOperationStatusRequest {}
+
+message SubscribeOperationStatusResponse {
+  common.EventMetadata metadata = 1;
+  OperationState operation_state = 2;
+}
+
 message SubscribeRobotPoseRequest {}
 
 message SubscribeRobotPoseResponse {
   common.EventMetadata metadata = 1;
   Pose pose = 2;
+}
+
+message SubscribeSettingsRequest {}
+
+message SubscribeSettingsResponse {
+  common.EventMetadata metadata = 1;
+  robot.SettingsState settings_state = 2;
+}
+
+message SwitchMapRequest {
+  int32 floor_level = 1;
+  int32 section_index = 2;
+}
+
+message SwitchMapResponse {
+  string map_id = 1;
 }
 
 message DriveRobotRequest {
