@@ -1,0 +1,21 @@
+// File: settings.proto
+//
+// Copyright 2025 Bear Robotics, Inc. All rights reserved.
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+syntax = "proto3";
+
+package bearrobotics.api.v0.robot;
+
+message SettingsState {
+  // A map where each item is a pair of setting key and value.
+  map<string, string> settings = 1;
+}
+
+message Setting {
+  string key = 1;
+  string value = 2;
+}
