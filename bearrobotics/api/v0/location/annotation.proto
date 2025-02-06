@@ -11,7 +11,6 @@ syntax = "proto3";
 package bearrobotics.api.v0.location;
 
 import "bearrobotics/api/v0/common/math.proto";
-import "bearrobotics/api/v0/location/topology_map.proto";
 import "bearrobotics/api/v0/location/types.proto";
 import "bearrobotics/api/v0/location/zones.proto";
 import "google/protobuf/timestamp.proto";
@@ -156,7 +155,4 @@ message Annotation {
 
   // Queues are used to define the waiting area.
   repeated Queue queues = 8;
-
-  // Topology map for Carti navigation.
-  TopologyMap topology_map = 9;
 }
