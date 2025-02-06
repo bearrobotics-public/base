@@ -26,6 +26,17 @@ message SystemCommand {
   }
 }
 
+message SystemState {
+  enum Health {
+    HEALTH_UNKNOWN = 0;
+    HEALTH_OK = 1;
+    HEALTH_ERROR = 2;
+  }
+
+  // State representing whether robot is in a healthy condition.
+  Health health = 1;
+}
+
 // Provides information related to the system.
 message SystemInfo {
   // Distribution version. e.g. "servi-24.03"
