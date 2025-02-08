@@ -1,30 +1,65 @@
 site_name: Bear Base API
-site_url: https://bearrobotics-public.github.io/base/
+site_url: https://base.api.bearrobotics.ai/
+copyright: Copyright 2025 Bear Robotics, Inc. All rights reserved.
 theme:
-  name: 'readthedocs'
+  name: 'material'
+  features:
+    - content.code.copy
+    - content.tooltips
+    - navigation.top
+    - navigation.tabs
+    - toc.follow
+  palette:
+    primary: custom
+  favicon: assets/favicon.png
+  logo: assets/bear_logo_white.png
 extra_css:
-    - assets/styles.css
+    - stylesheets/extra.css
 markdown_extensions:
   - toc:
       permalink: True
       toc_depth: 4
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
 nav:
-  - Home: index.md
   - API Reference:
-    - v0:
+    - v0.1 (current):
       - Services:
-        - RobotAPIService: v0/robot/RobotApiService.md
+        - RobotAPIService: v0.1/robot/RobotApiService.md
       - Message Types:
         - Common:
-          - Annotations: v0/common/Annotations.md
-          - Math: v0/common/Math.md
+          - Annotations: v0.1/common/Annotations.md
+          - Math: v0.1/common/Math.md
+        - Location:
+          - Annotation: v0.1/location/Annotation.md
+          - Location: v0.1/location/Location.md
+          - Map: v0.1/location/Map.md
+          - Types: v0.1/location/Types.md
+          - Zones: v0.1/location/Zones.md
         - Robot:
-          - Network: v0/robot/Network.md
-          - Robot: v0/robot/Robot.md
-          - Status: v0/robot/Status.md
-          - System: v0/robot/System.md
+          - Localization: v0.1/robot/Localization.md
+          - Mission: v0.1/robot/Mission.md
+          - Network: v0.1/robot/Network.md
+          - Robot: v0.1/robot/Robot.md
+          - Settings: v0.1/robot/Settings.md
+          - Status: v0.1/robot/Status.md
+          - System: v0.1/robot/System.md
+    - v0.0:
+      - Services:
+        - RobotAPIService: v0.0/robot/RobotApiService.md
+      - Message Types:
+        - Common:
+          - Annotations: v0.0/common/Annotations.md
+          - Math: v0.0/common/Math.md
+        - Robot:
+          - Network: v0.0/robot/Network.md
+          - Robot: v0.0/robot/Robot.md
+          - Status: v0.0/robot/Status.md
+          - System: v0.0/robot/System.md
   - Guides:
     - Setup:
       - Network Connectivity: guides/setup/setup_network.md
       - Examples: guides/setup/examples_python.md
     - Troubleshooting: guides/troubleshooting.md
+  - Changelog: changelog.md
