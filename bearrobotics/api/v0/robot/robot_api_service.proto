@@ -169,17 +169,6 @@ service RobotAPIService {
   rpc SubscribeOperationStatus(SubscribeOperationStatusRequest)
       returns (stream SubscribeOperationStatusResponse) {}
 
-  // Subscribe for high level tray status.
-  //
-  // This is only available for robots with trays (e.g. Servi, Plus).
-  // Upon subscription, the latest known tray status will be sent, followed by
-  // snapshot updates of all tray states when any state is updated.
-  // Weight changes are updated at a 10g granularity threshold. Robots with
-  // trays that does not have weight sensor will have an UNKNOWN load state and
-  // no weight data streamed.
-  rpc SubscribeTrayStatuses(SubscribeTrayStatusesRequest)
-      returns (stream SubscribeTrayStatusesResponse) {}
-
   // === System ================================================================
 
   // Connect to a specified Wi-Fi network.
@@ -429,16 +418,6 @@ message SubscribeSystemStatusRequest {}
 message SubscribeSystemStatusResponse {
   common.EventMetadata metadata = 1;
   SystemState system_state = 2;
-}
-
-message SubscribeTrayStatusesRequest {}
-
-message SubscribeTrayStatusesResponse {
-  common.EventMetadata metadata = 1;
-
-  // State of enabled trays, ordered from the top-most tray on the robot to the
-  // bottom. This state is only available for robots with trays.
-  repeated TrayState tray_states = 2;
 }
 
 message SwitchMapRequest {
