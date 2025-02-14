@@ -4,7 +4,7 @@
 
 ### Breaking Changes
 
-- OdometryState has been moved from `robot/status.proto` to `robot/robot.proto`
+- [OdometryState](../v0.1/robot/Robot.md#odometrystate) has been moved from `robot/status.proto` to `robot/robot.proto`
 
 ### Newly Added Endpoints
 

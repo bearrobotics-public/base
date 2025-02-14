@@ -45,6 +45,7 @@ nav:
           - Settings: v0.1/robot/Settings.md
           - Status: v0.1/robot/Status.md
           - System: v0.1/robot/System.md
+      - Settings: v0.1/settings.md
     - v0.0:
       - Services:
         - RobotAPIService: v0.0/robot/RobotApiService.md
