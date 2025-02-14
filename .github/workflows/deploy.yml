@@ -28,7 +28,6 @@ jobs:
       - run: mkdocs gh-deploy --force
       - run: |
           git checkout gh-pages
-          git checkout main -- CNAME 
+          git checkout main -- CNAME
           git commit -m "[Deploy CNAME]"
-          git push -f origin gh-pages 
-
+          git push -f origin gh-pages
