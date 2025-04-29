@@ -29,29 +29,14 @@ import "bearrobotics/api/v0/robot/system.proto";
 service RobotAPIService {
   // === Map ===================================================================
 
-  // Retrieve annotation data for a specified annotation_id from the Universe.
-  //
-  // If offline, it uses the cached Annotation data.
-  rpc GetAnnotation(GetAnnotationRequest) returns (GetAnnotationResponse) {}
-
   // Retrieve the current location data to which the robot is connected from
   // the Universe.
   //
   // If the robot is offline, it uses the cached Location data.
   rpc GetLocation(GetLocationRequest) returns (GetLocationResponse) {}
 
-  // Retrieve the map corresponding to a given map_id from the Universe.
-  //
-  // If offline, it uses the cached Map data.
-  rpc GetMap(GetMapRequest) returns (GetMapResponse) {}
-
   // Retrieve the current map content data, which is loaded on the robot.
   rpc GetMapContent(GetMapContentRequest) returns (GetMapContentResponse) {}
-
-  // Retrieve map data for a specified map_data_id from the Universe.
-  //
-  // If offline, it uses the cached MapData data.
-  rpc GetMapData(GetMapDataRequest) returns (GetMapDataResponse) {}
 
   // Switches the current map to a specified map.
   //
@@ -107,7 +92,7 @@ service RobotAPIService {
   rpc LocalizeRobot(LocalizeRobotRequest) returns (LocalizeRobotResponse) {}
 
   // Enable or disable the emergency stop.
-  rpc SetEmergencyStop (SetEmergencyStopRequest)
+  rpc SetEmergencyStop(SetEmergencyStopRequest)
       returns (SetEmergencyStopResponse) {}
 
   // Manually set the robot pose given a pose on the map and covariance matrix.
@@ -211,13 +196,6 @@ service RobotAPIService {
   // status, followed by updates whenever the network status changes.
   rpc SubscribeNetworkStatus(SubscribeNetworkStatusRequest)
       returns (stream SubscribeNetworkStatusResponse) {}
-
-  // Subscribe to the robot's system status.
-  //
-  // Upon subscription, the server immediately sends the latest known system
-  //status, followed by updates whenever the system status changes.
-  rpc SubscribeSystemStatus(SubscribeSystemStatusRequest)
-      returns (stream SubscribeSystemStatusResponse) {}
 }
 
 message AppendMissionRequest {
@@ -270,40 +248,16 @@ message ForgetWifiRequest {
 
 message ForgetWifiResponse {}
 
-message GetAnnotationRequest {
-  string annotation_id = 1;
-}
-
-message GetAnnotationResponse {
-  location.Annotation annotation = 1;
-}
-
 message GetLocationRequest {}
 
 message GetLocationResponse {
   location.Location location = 1;
 }
 
-message GetMapRequest {
-  string map_id = 1;
-}
-
-message GetMapResponse {
-  location.Map map = 1;
-}
-
 message GetMapContentRequest {}
 
 message GetMapContentResponse {
   location.MapContent map_content = 1;
-}
-
-message GetMapDataRequest {
-  string map_data_id = 1;
-}
-
-message GetMapDataResponse {
-  location.MapData map_data = 1;
 }
 
 message GetSystemInfoRequest {}
@@ -411,13 +365,6 @@ message SubscribeSettingsRequest {}
 message SubscribeSettingsResponse {
   common.EventMetadata metadata = 1;
   robot.SettingsState settings_state = 2;
-}
-
-message SubscribeSystemStatusRequest {}
-
-message SubscribeSystemStatusResponse {
-  common.EventMetadata metadata = 1;
-  SystemState system_state = 2;
 }
 
 message SwitchMapRequest {

@@ -4,13 +4,6 @@ The definition of Bear Robot API service.
 
 ### Map
 
-#### GetAnnotation
-
-- **Request Type:** [GetAnnotationRequest](#getannotationrequest)
-- **Response Type:** [GetAnnotationResponse](#getannotationresponse)
-- **Description:**
-  Retrieve annotation data for a specified annotation_id from the Universe.<br>
-  If offline, it uses the cached Annotation data.
 #### GetLocation
 
 - **Request Type:** [GetLocationRequest](#getlocationrequest)
@@ -19,14 +12,6 @@ The definition of Bear Robot API service.
   Retrieve the current location data to which the robot is connected from
   the Universe. If the robot is offline, it uses the cached Location data.
 
-#### GetMap
-
-- **Request Type:** [GetMapRequest](#getmaprequest)
-- **Response Type:** [GetMapResponse](#getmapresponse)
-- **Description:**
-  Retrieve the map corresponding to a given map_id from the Universe.<br>
-  If offline, it uses the cached Map data.
-
 #### GetMapContent
 
 - **Request Type:** [GetMapContentRequest](#getmapcontentrequest)
@@ -34,20 +19,13 @@ The definition of Bear Robot API service.
 - **Description:**
   Retrieve the current map content data, which is loaded on the robot.
 
-#### GetMapData
-- **Request Type:** [GetMapDataRequest](#getmapdatarequest)
-- **Response Type:** [GetMapDataResponse](#getmapdataresponse)
-- **Description:**
-  Retrieve map data for a specified map_data_id from the Universe.<br>
-  If offline, it uses the cached MapData data.
-
 #### SwitchMap
 
 - **Request Type:** [SwitchMapRequest](#switchmaprequest)
 - **Response Type:** [SwitchMapResponse](#switchmapresponse)
 - **Description:**
   Switches the current map to a specified map.<br>
-The request should specify a
+  The request should specify a
   floor level and section index to be used. Returns the map_id of the switched
   map.
 
@@ -273,338 +251,282 @@ The request should specify a
   Upon subscription, the server immediately sends the latest known network
   status, followed by updates whenever the network status changes.
 
-#### SubscribeSystemStatus
-
-- **Request Type:** [SubscribeSystemStatusRequest](#subscribesystemstatusrequest)
-- **Response Type:** [SubscribeSystemStatusResponse](#subscribesystemstatusresponse)
-- **Description:**
-  Subscribe to the robot's system status.<br>
-  Upon subscription, the server immediately sends the latest known system
-  status, followed by updates whenever the system status changes.
-
 ## Message Types
 
 ##### AppendMissionRequest
 
-| Name | Type | Description |
-|------|------|-------------|
-| `mission` | [Mission](Mission.md#mission) |  |
+| Name      | Type                          | Description |
+| --------- | ----------------------------- | ----------- |
+| `mission` | [Mission](Mission.md#mission) |             |
 
 ##### AppendMissionResponse
 
-| Name | Type | Description |
-|------|------|-------------|
+| Name         | Type   | Description                                    |
+| ------------ | ------ | ---------------------------------------------- |
 | `mission_id` | string | The unique identifier of the appended mission. |
 
 ##### ChargeRobotRequest
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### ChargeRobotResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `mission_id` | string |  |
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| `mission_id` | string |             |
 
 ##### ConnectWifiRequest
 
-| Name | Type | Description |
-|------|------|-------------|
-| `ssid` | string | SSID of Wi-Fi network. |
-| `authentication` | [Authentication](Network.md#authentication) | Security details for the network.<br>This field can be omitted if the network is unsecure. |
-| `connection_options` | [ConnectionOptions](Network.md#connectionoptions) | Optional parameters for static IP configuration. |
+| Name                 | Type                                              | Description                                                                                |
+| -------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `ssid`               | string                                            | SSID of Wi-Fi network.                                                                     |
+| `authentication`     | [Authentication](Network.md#authentication)       | Security details for the network.<br>This field can be omitted if the network is unsecure. |
+| `connection_options` | [ConnectionOptions](Network.md#connectionoptions) | Optional parameters for static IP configuration.                                           |
 
 ##### ConnectWifiResponse
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### CreateMissionRequest
 
-| Name | Type | Description |
-|------|------|-------------|
-| `mission` | [Mission](Mission.md#mission) |  |
+| Name      | Type                          | Description |
+| --------- | ----------------------------- | ----------- |
+| `mission` | [Mission](Mission.md#mission) |             |
 
 ##### CreateMissionResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `mission_id` | string |  |
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| `mission_id` | string |             |
 
 ##### DriveRobotRequest
 
-| Name | Type | Description |
-|------|------|-------------|
+| Name    | Type                             | Description                                            |
+| ------- | -------------------------------- | ------------------------------------------------------ |
 | `twist` | [Twist](../common/Math.md#twist) | The desired max linear and angular velocity to travel. |
 
 ##### DriveRobotResponse
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### ForgetWifiRequest
 
-| Name | Type | Description |
-|------|------|-------------|
-| `ssid` | string |  |
+| Name   | Type   | Description |
+| ------ | ------ | ----------- |
+| `ssid` | string |             |
 
 ##### ForgetWifiResponse
 
-- *(No fields defined)*
-
-##### GetAnnotationRequest
-
-| Name | Type | Description |
-|------|------|-------------|
-| `annotation_id` | string |  |
-
-##### GetAnnotationResponse
-
-| Name | Type | Description |
-|------|------|-------------|
-| `annotation` | [Annotation](../location/Annotation.md#annotation) |  |
+- _(No fields defined)_
 
 ##### GetLocationRequest
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### GetLocationResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `location` | [Location](../location/Location.md#location) |  |
+| Name       | Type                                         | Description |
+| ---------- | -------------------------------------------- | ----------- |
+| `location` | [Location](../location/Location.md#location) |             |
 
 ##### GetMapContentRequest
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### GetMapContentResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `map_content` | [MapContent](../location/Map.md#mapcontent) |  |
-
-##### GetMapDataRequest
-
-| Name | Type | Description |
-|------|------|-------------|
-| `map_data_id` | string |  |
-
-##### GetMapDataResponse
-
-| Name | Type | Description |
-|------|------|-------------|
-| `map_data` | [MapData](../location/Map.md#mapdata) |  |
-
-##### GetMapRequest
-
-| Name | Type | Description |
-|------|------|-------------|
-| `map_id` | string |  |
-
-##### GetMapResponse
-
-| Name | Type | Description |
-|------|------|-------------|
-| `map` | [Map](../location/Map.md#map) |  |
+| Name          | Type                                        | Description |
+| ------------- | ------------------------------------------- | ----------- |
+| `map_content` | [MapContent](../location/Map.md#mapcontent) |             |
 
 ##### GetSystemInfoRequest
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### GetSystemInfoResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `system_info` | [SystemInfo](System.md#systeminfo) |  |
+| Name          | Type                               | Description |
+| ------------- | ---------------------------------- | ----------- |
+| `system_info` | [SystemInfo](System.md#systeminfo) |             |
 
 ##### ListWifiConnectionsRequest
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### ListWifiConnectionsResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `wifi_connections` | [WifiConnections](Network.md#wificonnections) |  |
+| Name               | Type                                          | Description |
+| ------------------ | --------------------------------------------- | ----------- |
+| `wifi_connections` | [WifiConnections](Network.md#wificonnections) |             |
 
 ##### LocalizeRobotRequest
 
-| Name | Type | Description |
-|------|------|-------------|
-| `goal` | [LocalizationGoal](Localization.md#localizationgoal) |  |
+| Name   | Type                                                 | Description |
+| ------ | ---------------------------------------------------- | ----------- |
+| `goal` | [LocalizationGoal](Localization.md#localizationgoal) |             |
 
 ##### LocalizeRobotResponse
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### RunSystemCommandRequest
 
-| Name | Type | Description |
-|------|------|-------------|
-| `system_command` | [SystemCommand](System.md#systemcommand) |  |
+| Name             | Type                                     | Description |
+| ---------------- | ---------------------------------------- | ----------- |
+| `system_command` | [SystemCommand](System.md#systemcommand) |             |
 
 ##### RunSystemCommandResponse
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### SetEmergencyStopRequest
 
-| Name | Type | Description |
-|------|------|-------------|
-| `e_stop_state` | [EmergencyStopState](Status.md#emergencystopstate) |  |
+| Name           | Type                                               | Description |
+| -------------- | -------------------------------------------------- | ----------- |
+| `e_stop_state` | [EmergencyStopState](Status.md#emergencystopstate) |             |
 
 ##### SetEmergencyStopResponse
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### SetPoseRequest
 
-| Name | Type | Description |
-|------|------|-------------|
+| Name                   | Type                                              | Description                                                                                                |
+| ---------------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | `pose_with_covariance` | [PoseWithCovariance](Robot.md#posewithcovariance) | A pose and a covariance matrix, if the covariance is not set, the internal default values will be applied. |
 
 ##### SetPoseResponse
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### SetSettingRequest
 
-| Name | Type | Description |
-|------|------|-------------|
-| `setting` | [Setting](Settings.md#setting) |  |
+| Name      | Type                           | Description |
+| --------- | ------------------------------ | ----------- |
+| `setting` | [Setting](Settings.md#setting) |             |
 
 ##### SetSettingResponse
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### SubscribeBatteryStatusRequest
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### SubscribeBatteryStatusResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `metadata` | [EventMetadata](../common/Annotations.md#eventmetadata) |  |
-| `battery_state` | [BatteryState](Status.md#batterystate) |  |
+| Name            | Type                                                    | Description |
+| --------------- | ------------------------------------------------------- | ----------- |
+| `metadata`      | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
+| `battery_state` | [BatteryState](Status.md#batterystate)                  |             |
 
 ##### SubscribeEmergencyStopStatusRequest
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### SubscribeEmergencyStopStatusResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `metadata` | [EventMetadata](../common/Annotations.md#eventmetadata) |  |
-| `e_stop_state` | [EmergencyStopState](Status.md#emergencystopstate) |  |
+| Name           | Type                                                    | Description |
+| -------------- | ------------------------------------------------------- | ----------- |
+| `metadata`     | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
+| `e_stop_state` | [EmergencyStopState](Status.md#emergencystopstate)      |             |
 
 ##### SubscribeLocalizationStatusRequest
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### SubscribeLocalizationStatusResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `metadata` | [EventMetadata](../common/Annotations.md#eventmetatdata) |  |
-| `localization_state` | [LocalizationState](Localization.md#localizationstate) |  |
+| Name                 | Type                                                     | Description |
+| -------------------- | -------------------------------------------------------- | ----------- |
+| `metadata`           | [EventMetadata](../common/Annotations.md#eventmetatdata) |             |
+| `localization_state` | [LocalizationState](Localization.md#localizationstate)   |             |
 
 ##### SubscribeMissionStatusRequest
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### SubscribeMissionStatusResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `metadata` | [EventMetadata](../common/Annotations.md#eventmetadata) |  |
-| `mission_state` | [MissionState](Mission.md#missionstate) |  |
+| Name            | Type                                                    | Description |
+| --------------- | ------------------------------------------------------- | ----------- |
+| `metadata`      | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
+| `mission_state` | [MissionState](Mission.md#missionstate)                 |             |
 
 ##### SubscribeNetworkStatusRequest
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### SubscribeNetworkStatusResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `metadata` | [EventMetadata](../common/Annotations.md#eventmetadata) |  |
-| `network_state` | [NetworkState](Network.md#networkstate) |  |
+| Name            | Type                                                    | Description |
+| --------------- | ------------------------------------------------------- | ----------- |
+| `metadata`      | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
+| `network_state` | [NetworkState](Network.md#networkstate)                 |             |
 
 ##### SubscribeOdometryStatusRequest
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### SubscribeOdometryStatusResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `metadata` | [EventMetadata](../common/Annotations.md#eventmetadata) |  |
-| `odometry_state` | [OdometryState](Robot.md#odometrystate) |  |
+| Name             | Type                                                    | Description |
+| ---------------- | ------------------------------------------------------- | ----------- |
+| `metadata`       | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
+| `odometry_state` | [OdometryState](Robot.md#odometrystate)                 |             |
 
 ##### SubscribeOperationStatusRequest
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### SubscribeOperationStatusResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `metadata` | [EventMetadata](../common/Annotations.md#eventmetadata) |  |
-| `operation_state` | [OperationState](Status.md#operationstate) |  |
+| Name              | Type                                                    | Description |
+| ----------------- | ------------------------------------------------------- | ----------- |
+| `metadata`        | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
+| `operation_state` | [OperationState](Status.md#operationstate)              |             |
 
 ##### SubscribeRobotPoseRequest
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### SubscribeRobotPoseResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `metadata` | [EventMetadata](../common/Annotations.md#eventmetadata) |  |
-| `pose` | [Pose](Robot.md#pose) |  |
+| Name       | Type                                                    | Description |
+| ---------- | ------------------------------------------------------- | ----------- |
+| `metadata` | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
+| `pose`     | [Pose](Robot.md#pose)                                   |             |
 
 ##### SubscribeSettingsRequest
 
-- *(No fields defined)*
+- _(No fields defined)_
 
 ##### SubscribeSettingsResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `metadata` | [EventMetadata](../common/Annotations.md#eventmetadata) |  |
-| `settings_state` | [SettingsState](Settings.md#settingsstate) |  |
-
-##### SubscribeSystemStatusRequest
-
-- *(No fields defined)*
-
-##### SubscribeSystemStatusResponse
-
-| Name | Type | Description |
-|------|------|-------------|
-| `metadata` | [EventMetadata](../common/Annotations.md#eventmetadata) |  |
-| `system_state` | [SystemState](System.md#systemstate) |  |
+| Name             | Type                                                    | Description |
+| ---------------- | ------------------------------------------------------- | ----------- |
+| `metadata`       | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
+| `settings_state` | [SettingsState](Settings.md#settingsstate)              |             |
 
 ##### SwitchMapRequest
 
-| Name | Type | Description |
-|------|------|-------------|
-| `floor_level` | int32 |  |
-| `section_index` | int32 |  |
+| Name            | Type  | Description |
+| --------------- | ----- | ----------- |
+| `floor_level`   | int32 |             |
+| `section_index` | int32 |             |
 
 ##### SwitchMapResponse
 
-| Name | Type | Description |
-|------|------|-------------|
-| `map_id` | string |  |
+| Name     | Type   | Description |
+| -------- | ------ | ----------- |
+| `map_id` | string |             |
 
 ##### UpdateMissionRequest
 
-| Name | Type | Description |
-|------|------|-------------|
-| `mission_command` | [MissionCommand](Mission.md#missioncommand) |  |
+| Name              | Type                                        | Description |
+| ----------------- | ------------------------------------------- | ----------- |
+| `mission_command` | [MissionCommand](Mission.md#missioncommand) |             |
 
 ##### UpdateMissionResponse
 
-- *(No fields defined)*
+- _(No fields defined)_
