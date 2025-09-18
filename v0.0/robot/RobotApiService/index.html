@@ -1,0 +1,2870 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://base.api.bearrobotics.ai/v0.0/robot/RobotApiService/">
+      
+      
+        <link rel="prev" href="../../../v0.1/settings/">
+      
+      
+        <link rel="next" href="../../common/Annotations/">
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>RobotAPIService - Bear Base API</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#robotapiservice" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Bear Base API" class="md-header__button md-logo" aria-label="Bear Base API" data-md-component="logo">
+      
+  <img src="../../../assets/bear_logo_white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bear Base API
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RobotAPIService
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../v0.1/robot/RobotApiService/" class="md-tabs__link">
+          
+  
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guides/setup/setup_network/" class="md-tabs__link">
+          
+  
+  
+  Guides
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Bear Base API" class="md-nav__button md-logo" aria-label="Bear Base API" data-md-component="logo">
+      
+  <img src="../../../assets/bear_logo_white.png" alt="logo">
+
+    </a>
+    Bear Base API
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    v0.1 (current)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            v0.1 (current)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1_1" id="__nav_1_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/robot/RobotApiService/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RobotAPIService
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1_2" id="__nav_1_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Message Types
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Message Types
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1_2_1" id="__nav_1_1_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Common
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_1_1_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Common
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/common/Annotations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annotations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/common/Math/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Math
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1_2_2" id="__nav_1_1_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Location
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_1_1_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Location
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/location/Annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annotation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/location/Location/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Location
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/location/Map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Map
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/location/Types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Types
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/location/Zones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Zones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1_2_3" id="__nav_1_1_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Robot
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_1_1_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Robot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/robot/Localization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Localization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/robot/Mission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mission
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/robot/Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/robot/Robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/robot/Settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/robot/Status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Status
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/robot/System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../v0.1/settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    v0.0
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            v0.0
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_2_1" id="__nav_1_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    RobotAPIService
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    RobotAPIService
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#robotapiservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      RobotAPIService
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RobotAPIService">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connectwifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConnectWifi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getsysteminfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetSystemInfo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listwificonnections" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListWifiConnections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribebatterystatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeBatteryStatus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribenetworkstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeNetworkStatus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribeodometrystatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeOdometryStatus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscriberobotpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeRobotPose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#driverobot" class="md-nav__link">
+    <span class="md-ellipsis">
+      DriveRobot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Message Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connectwifirequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConnectWifiRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectwifiresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConnectWifiResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#driverobotrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      DriveRobotRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#driverobotresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      DriveRobotResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getsysteminforequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetSystemInfoRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getsysteminforesponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetSystemInfoResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listwificonnectionsrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListWifiConnectionsRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listwificonnectionsresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListWifiConnectionsResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribebatterystatusrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeBatteryStatusRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribebatterystatusresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeBatteryStatusResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribenetworkstatusrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeNetworkStatusRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribenetworkstatusresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeNetworkStatusResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribeodometrystatusrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeOdometryStatusRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribeodometrystatusresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeOdometryStatusResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscriberobotposerequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeRobotPoseRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscriberobotposeresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeRobotPoseResponse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2_2" id="__nav_1_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Message Types
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Message Types
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2_2_1" id="__nav_1_2_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Common
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_1_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Common
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/Annotations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annotations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/Math/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Math
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2_2_2" id="__nav_1_2_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Robot
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_1_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Robot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Status
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Setup
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/setup/setup_network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Network Connectivity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/setup/examples_python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#robotapiservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      RobotAPIService
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RobotAPIService">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connectwifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConnectWifi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getsysteminfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetSystemInfo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listwificonnections" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListWifiConnections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribebatterystatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeBatteryStatus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribenetworkstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeNetworkStatus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribeodometrystatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeOdometryStatus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscriberobotpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeRobotPose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#driverobot" class="md-nav__link">
+    <span class="md-ellipsis">
+      DriveRobot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Message Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connectwifirequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConnectWifiRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectwifiresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConnectWifiResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#driverobotrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      DriveRobotRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#driverobotresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      DriveRobotResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getsysteminforequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetSystemInfoRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getsysteminforesponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetSystemInfoResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listwificonnectionsrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListWifiConnectionsRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listwificonnectionsresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListWifiConnectionsResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribebatterystatusrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeBatteryStatusRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribebatterystatusresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeBatteryStatusResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribenetworkstatusrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeNetworkStatusRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribenetworkstatusresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeNetworkStatusResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribeodometrystatusrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeOdometryStatusRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribeodometrystatusresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeOdometryStatusResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscriberobotposerequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeRobotPoseRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscriberobotposeresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      SubscribeRobotPoseResponse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>RobotAPIService</h1>
+
+<h3 id="robotapiservice">RobotAPIService<a class="headerlink" href="#robotapiservice" title="Permanent link">&para;</a></h3>
+<h4 id="connectwifi">ConnectWifi<a class="headerlink" href="#connectwifi" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#connectwifirequest">ConnectWifiRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#connectwifiresponse">ConnectWifiResponse</a></li>
+<li><strong>Description:</strong>
+  Clients can connect the base to an existing Wi-Fi network. <br> To connect to secure networks, <code>Authentication</code> can be set. <br><code>ConnectionOptions</code> can be used if further configuration is needed for the Wi-Fi network.<br>
+  <code>ssid</code> should be provided and nearby broadcasted networks may be scanned with ListWifiConnections.</li>
+</ul>
+<p>**Example: Connecting to Wi-Fi Networks in ASCII Proto Format **
+<br>
+To connect to an open public Wi-Fi network <code>bear_public_wifi</code>:
+<div class="highlight"><pre><span></span><code>// Sample Request
+ssid: &#39;bear_public_wifi&#39;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// Sample Response
+{}
+</code></pre></div></p>
+<hr />
+<p>To connect to a private Wi-Fi network <code>bear_private_wifi</code> that requires a password:
+<div class="highlight"><pre><span></span><code>// Sample Request
+ssid: &#39;bear_private_wifi&#39;
+authentication {
+  password: &#39;password_for_private&#39;
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// Sample Response
+{}
+</code></pre></div></p>
+<hr />
+<p><strong>Example: To connect to a private Wi-Fi network <code>bear_private_wifi2</code> that requires a username and password:</strong>
+<div class="highlight"><pre><span></span><code>// Sample Request
+ssid: &#39;bear_private_wifi2&#39;
+authentication {
+  username: &#39;bear_user&#39;
+  password: &#39;password_for_private2&#39;
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// Sample Response
+{}
+</code></pre></div></p>
+<hr />
+<p><strong>Example: To connect to an open public Wi-Fi network <code>bear_public_wifi2</code> that has a gateway and needs to specify DNS:</strong>
+<div class="highlight"><pre><span></span><code>// Sample Request
+ssid: &#39;bear_public_wifi2&#39;
+connection_options {
+  gateway_ip: &#39;192.168.1.1&#39;
+  dns_ips: [ &#39;1.1.1.1&#39;, &#39;1.0.0.1&#39;, &#39;8.8.8.8&#39;, &#39;8.8.4.4&#39; ]
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// Sample Response
+{}
+</code></pre></div></p>
+<hr />
+<h4 id="getsysteminfo">GetSystemInfo<a class="headerlink" href="#getsysteminfo" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#getsysteminforequest">GetSystemInfoRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#getsysteminforesponse">GetSystemInfoResponse</a></li>
+<li><strong>Description:</strong>
+  Get the overall robot system information.<br><br>When called, the server returns robot system information.<br>The system info tends to be static and does not change often.</li>
+</ul>
+<p><strong>Example in ASCII proto format</strong>
+<div class="highlight"><pre><span></span><code>// Sample Request
+{}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// Sample Response
+system_Info {
+  software_version: ‘base-slim-24.11.875;
+  firmware_version: &#39;3.6.0.2&#39;
+  robot_family: ROBOT_FAMILY_SERVI_PLUS
+  robot_id: &#39;pennybot-xxxxxx&#39;
+  locale_language: &#39;en&#39;
+  wifi_info {
+    current_ssid: &#39;bear_demo&#39;
+    cidr_ip: &#39;10.1.30.104/24&#39;
+    gateway_ip: &#39;10.1.30.1&#39;
+    macAddress: &#39;E4:C7:67:EE:FF:AA&#39;
+    dns_ips: [ &#39;1.1.1.1&#39;, &#39;1.0.0.1&#39; ]
+  }
+}
+</code></pre></div></p>
+<hr />
+<h4 id="listwificonnections">ListWifiConnections<a class="headerlink" href="#listwificonnections" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#listwificonnectionsrequest">ListWifiConnectionsRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#listwificonnectionsresponse">ListWifiConnectionsResponse</a></li>
+<li><strong>Description:</strong>
+  List all available Wi-Fi networks as well as known Wi-Fi networks.</li>
+</ul>
+<p><strong>Example in ASCII proto format</strong>
+<div class="highlight"><pre><span></span><code>// Sample Request
+{}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// Sample Response
+wifi_connections {
+  saved_networks {
+    ssid: &#39;bear_test&#39;
+    signal_strength: 90
+    security: SECURITY_PASSWORD_SECURED
+  }
+  saved_networks {
+    ssid: &#39;bear_public&#39;
+    signal_strength: 87
+    security: SECURITY_UNSECURED
+  }
+  available_networks {
+    ssid: &#39;bear_demo&#39;
+    signal_strength: 90
+    security: SECURITY_PASSWORD_SECURED
+  }
+  available_networks {
+    ssid: &#39;public_neighbor&#39;
+    signal_strength: 69
+    security: SECURITY_UNSECURED
+  }
+  available_networks {
+    ssid: &#39;bear_private&#39;
+    signal_strength: 90
+    security: SECURITY_PASSWORD_SECURED
+  }
+}
+</code></pre></div></p>
+<hr />
+<h4 id="subscribebatterystatus">SubscribeBatteryStatus<a class="headerlink" href="#subscribebatterystatus" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#subscribebatterystatusrequest">SubscribeBatteryStatusRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#subscribebatterystatusresponse">SubscribeBatteryStatusResponse</a></li>
+<li><strong>Description:</strong>
+  Subscribe to the robot battery status.<br><br>Upon subscription, the latest known battery status is sent,<br>followed by updates whenever the battery status changes.</li>
+</ul>
+<p><strong>Example in ASCII proto format where base is charging followed by disconnecting the charger</strong>
+<div class="highlight"><pre><span></span><code>// Sample Request
+{}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// Sample Response
+{
+  metadata {
+    timestamp {
+      seconds: 1714313000
+      nanos: 0
+    }
+    sequence_number: 50
+  }
+  battery_state {
+    charge_percent: 99
+    state: STATE_CHARGING
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1714315000
+      nanos: 0
+    }
+    sequence_number: 51
+  }
+  battery_state {
+    charge_percent: 100
+    state: STATE_CHARGING
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1714316000
+      nanos: 0
+    }
+    sequence_number: 52
+  }
+  battery_state {
+    charge_percent: 100
+    state: STATE_DISCHARGING
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1714326000
+      nanos: 0
+    }
+    sequence_number: 53
+  }
+  battery_state {
+    charge_percent: 99
+    state: STATE_DISCHARGING
+  }
+}
+</code></pre></div></p>
+<hr />
+<h4 id="subscribenetworkstatus">SubscribeNetworkStatus<a class="headerlink" href="#subscribenetworkstatus" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#subscribenetworkstatusrequest">SubscribeNetworkStatusRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#subscribenetworkstatusresponse">SubscribeNetworkStatusResponse</a></li>
+<li><strong>Description:</strong>
+  Subscribe to the robot's network status.<br><br>Upon subscription, the server immediately sends the latest known<br>network status, followed by updates whenever the network status<br>changes.</li>
+</ul>
+<p><strong>Example in ASCII proto format where initially there is no Wi-Fi connection, then a Wi-Fi is connected, and disconnected again</strong>
+<div class="highlight"><pre><span></span><code>// Sample Request
+{}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// Sample Response
+{
+  metadata {
+    timestamp {
+      seconds: 1732161076001
+      nanos: 740591178
+    }
+    sequence_number: 15
+  }
+  network_state {}
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1732161076101
+      nanos: 1654
+    }
+    sequence_number: 16
+  }
+  network_state {
+    connected_wifi {
+      ssid: &#39;bear_test&#39;
+      signal_strength: 90
+      security: SECURITY_PASSWORD_SECURED
+    }
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1732161076540
+      nanos: 905178
+    }
+    sequence_number: 17
+  }
+  network_state {}
+}
+</code></pre></div></p>
+<hr />
+<h4 id="subscribeodometrystatus">SubscribeOdometryStatus<a class="headerlink" href="#subscribeodometrystatus" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#subscribeodometrystatusrequest">SubscribeOdometryStatusRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#subscribeodometrystatusresponse">SubscribeOdometryStatusResponse</a></li>
+<li><strong>Description:</strong>
+  Subscribe to the robot's odometry status.<br><br>Upon subscription, the server server provides regular updates (5Hz) of <br>the odometry status.</li>
+</ul>
+<p><strong>Example in ASCII proto format</strong>
+<div class="highlight"><pre><span></span><code>// Sample Request
+{}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// Sample Response
+{
+  metadata {
+    timestamp {
+      seconds: 1732363871000
+      nanos: 966690012
+    }
+    sequence_number: 321
+  }
+  odometry_state {
+    pose {
+      x_meters: 0.44569823
+      y_meters: 0.122843966
+      heading_radians: 0.38896447
+    }
+    twist {
+      linear_velocity: 0.04743719
+      angular_velocity: 0.024076527
+    }
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1732363871001
+      nanos: 148576818
+    }
+    sequence_number: 322
+  }
+  odometry_state {
+    pose {
+      x_meters: 0.44870216
+      y_meters: 0.124077715
+      heading_radians: 0.39042783
+    }
+    twist {
+      linear_velocity: 0.00031081674
+      angular_velocity: -0.00031484783
+    }
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1732363871001
+      nanos: 340591393
+    }
+    sequence_number: 323
+  }
+  odometry_state {
+    pose {
+      x_meters: 0.44822562
+      y_meters: 0.12388177
+      heading_radians: 0.3896436
+    }
+    twist {
+      linear_velocity: -8.1940074e-05
+      angular_velocity: -0.00036711502
+    }
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1732363871001
+      nanos: 528572177
+    }
+    sequence_number: 324
+  }
+  odometry_state {
+    pose {
+      x_meters: 0.44822484
+      y_meters: 0.12388145
+      heading_radians: 0.38963988
+    }
+    twist {}
+  }
+}
+{
+  metadata {
+    timestamp {
+      seconds: 1732363871001
+      nanos: 768605432
+    }
+    sequence_number: 325
+  }
+  odometry_state {
+    pose {
+      x_meters: 0.44822484
+      y_meters: 0.12388145
+      heading_radians: 0.38963988
+    }
+    twist {}
+  }
+}
+</code></pre></div></p>
+<hr />
+<h4 id="subscriberobotpose">SubscribeRobotPose<a class="headerlink" href="#subscriberobotpose" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#subscriberobotposerequest">SubscribeRobotPoseRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#subscriberobotposeresponse">SubscribeRobotPoseResponse</a></li>
+<li><strong>Description:</strong>
+Clients can subscribe to receive robot pose updates.<br><br>Upon subscription, the latest known robot pose is received, followed by updates at 5Hz.</li>
+</ul>
+<p><strong>Example in ASCII proto format</strong>
+<div class="highlight"><pre><span></span><code>// Sample Request
+{}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// Sample Response
+{
+  metadata {
+    timestamp {
+      seconds: 1715262000
+      nanos: 168576818
+    }
+    sequence_number: 175
+  }
+  pose {
+    x_meters: 12.522097
+    y_meters: -5.08858
+    heading_radians: -1.3201984
+  }
+}
+{
+  metadata {
+    timestamp {
+      Seconds: 1715262000
+      nanos: 360591391
+    }
+    sequence_number: 176
+  }
+  pose {
+    x_meters: 12.522099
+    y_meters: -5.088586
+    heading_radians: -1.3201984
+  }
+}
+{
+  metadata {
+    timestamp {
+      Seconds: 1715262000
+      nanos: 549562134
+    }
+    sequence_number: 177
+  }
+  pose {
+    x_meters: 12.522101
+    y_meters: -5.088586
+    heading_radians: -1.3201984
+  }
+}
+</code></pre></div></p>
+<hr />
+<h4 id="driverobot">DriveRobot<a class="headerlink" href="#driverobot" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Request Type:</strong> <a href="#driverobotrequest">DriveRobotRequest</a></li>
+<li><strong>Response Type:</strong> <a href="#driverobotresponse">DriveRobotResponse</a></li>
+<li><strong>Description:</strong>
+  Manually drive the robot.<br><br>A fine grained level manual drive control that allows the user to<br>specify a desired linear and angular velocity. The command will be<br>smoothed by the robot.<br>The request message should be streamed at a rate of at least 5Hz for<br>smooth operation. If the frequency doesn't meet the requirements, it<br>will set the commanded velocity to zero.</li>
+</ul>
+<p><strong>Example of driving in ASCII proto format</strong>
+Robot drives forward at 0.2 m/s
+<div class="highlight"><pre><span></span><code>// Sample Request at 5Hz
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.0
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// Sample Response
+{}
+</code></pre></div>
+Robot does an arced right turn at a constant speed of 0.2 m/s
+<div class="highlight"><pre><span></span><code>// Sample Request at 5Hz
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.1
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// Sample Response
+{}
+</code></pre></div>
+Robot does an arced left turn at a constant speed of -0.2 m/s
+<div class="highlight"><pre><span></span><code>// Sample Request at 5Hz
+twist {
+  linear_velocity: 0.2
+  angular_velocity: -0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: -0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: -0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: -0.1
+}
+twist {
+  linear_velocity: 0.2
+  angular_velocity: -0.1
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// Sample Response
+{}
+</code></pre></div>
+Robot accelerating from speed of 0.2 m/s to 0.25 m/s forward
+<div class="highlight"><pre><span></span><code>// Sample Request at 5Hz
+twist {
+  linear_velocity: 0.2
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.21
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.22
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.23
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.24
+  angular_velocity: 0.0
+}
+twist {
+  linear_velocity: 0.25
+  angular_velocity: 0.0
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// Sample Response
+{}
+</code></pre></div></p>
+<hr />
+<h3 id="message-types">Message Types<a class="headerlink" href="#message-types" title="Permanent link">&para;</a></h3>
+<h4 id="connectwifirequest">ConnectWifiRequest<a class="headerlink" href="#connectwifirequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>ssid</code> (string): SSID of Wi-Fi network.</li>
+<li><code>authentication</code> <a href="../Network/#authentication">(Authentication)</a>: Security details for the network.
+This field can be omitted if the network is unsecure.</li>
+<li><code>connection_options</code> <a href="../Network/#connectionoptions">(ConnectionOptions)</a>: Optional parameters for static IP configuration.</li>
+</ul>
+</li>
+</ul>
+<h4 id="connectwifiresponse">ConnectWifiResponse<a class="headerlink" href="#connectwifiresponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="driverobotrequest">DriveRobotRequest<a class="headerlink" href="#driverobotrequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>twist</code> <a href="../../common/Math/#twist">(Twist)</a>: The desired max linear and angular velocity to travel.</li>
+</ul>
+</li>
+</ul>
+<h4 id="driverobotresponse">DriveRobotResponse<a class="headerlink" href="#driverobotresponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="getsysteminforequest">GetSystemInfoRequest<a class="headerlink" href="#getsysteminforequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="getsysteminforesponse">GetSystemInfoResponse<a class="headerlink" href="#getsysteminforesponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>system_info</code> <a href="../System/#systeminfo">(SystemInfo)</a>: Robot system details</li>
+</ul>
+</li>
+</ul>
+<h4 id="listwificonnectionsrequest">ListWifiConnectionsRequest<a class="headerlink" href="#listwificonnectionsrequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="listwificonnectionsresponse">ListWifiConnectionsResponse<a class="headerlink" href="#listwificonnectionsresponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>wifi_connections</code> <a href="../Network/#wificonnections">(WifiConnections)</a>: List of saved and available networks</li>
+</ul>
+</li>
+</ul>
+<h4 id="subscribebatterystatusrequest">SubscribeBatteryStatusRequest<a class="headerlink" href="#subscribebatterystatusrequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="subscribebatterystatusresponse">SubscribeBatteryStatusResponse<a class="headerlink" href="#subscribebatterystatusresponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>metadata</code> <a href="../../common/Annotations/#eventmetadata">(EventMetadata)</a>: Timestamp and sequence number</li>
+<li><code>battery_state</code> <a href="../Status/#batterystate">(BatteryState)</a>: Battery and charge information</li>
+</ul>
+</li>
+</ul>
+<h4 id="subscribenetworkstatusrequest">SubscribeNetworkStatusRequest<a class="headerlink" href="#subscribenetworkstatusrequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="subscribenetworkstatusresponse">SubscribeNetworkStatusResponse<a class="headerlink" href="#subscribenetworkstatusresponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>metadata</code> <a href="../../common/Annotations/#eventmetadata">(EventMetadata)</a>: Timestamp and sequence number</li>
+<li><code>network_state</code> <a href="../Network/#networkstate">(NetworkState)</a>: Network status</li>
+</ul>
+</li>
+</ul>
+<h4 id="subscribeodometrystatusrequest">SubscribeOdometryStatusRequest<a class="headerlink" href="#subscribeodometrystatusrequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="subscribeodometrystatusresponse">SubscribeOdometryStatusResponse<a class="headerlink" href="#subscribeodometrystatusresponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>metadata</code> <a href="../../common/Annotations/#eventmetadata">(EventMetadata)</a>: Timestamp and sequence number</li>
+<li><code>odometry_state</code> <a href="../Status/#odometry_state">(OdometryState)</a>: Current odometry information</li>
+</ul>
+</li>
+</ul>
+<h4 id="subscriberobotposerequest">SubscribeRobotPoseRequest<a class="headerlink" href="#subscriberobotposerequest" title="Permanent link">&para;</a></h4>
+<ul>
+<li><em>(No fields defined)</em></li>
+</ul>
+<h4 id="subscriberobotposeresponse">SubscribeRobotPoseResponse<a class="headerlink" href="#subscriberobotposeresponse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Fields:</strong><ul>
+<li><code>metadata</code> <a href="../../common/Annotations/#eventmetadata">(EventMetadata)</a>: Timestamp and sequence number</li>
+<li><code>pose</code> <a href="../Robot/#pose">(Pose)</a>: Current robot position and orientation</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright 2025 Bear Robotics, Inc. All rights reserved.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tooltips", "navigation.top", "navigation.tabs", "toc.follow"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
