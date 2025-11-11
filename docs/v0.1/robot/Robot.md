@@ -1,25 +1,69 @@
+# Robot
 
+Robot messages provide information about the robot's pose, odometry, and physical state.
 
-### Message Types
+## Message Types
 
-##### OdometryState
+### Pose
+Represents the robot pose.
 
-| Name | Type | Description |
-|------|------|-------------|
-| `pose` | [Pose](#pose) |  |
-| `twist` | [Twist](../common/Math.md#twist) | A message containing the linear and angular velocity of the robot.<br>A positive linear velocity means the robot is moving forward in the<br>direction of the Pose.heading, while a negative is opposite of the<br>Pose.heading.<br>A positive angular velocity means the robot is turning clockwise when<br>looking from above, and negative is counter-clockwise when looking<br>from above.<br>If twist is 0, i.e. linear and angular velocities are 0, the robot is<br>stationary. |
+| Field  | Message Type | Description |
+|------------|-------------| ---|
+|`x_meters`   |`float`	| x, y coordinates inside the Map relative to the map's specified origin. |
+|`y_meters`	|`float`	| y coordinate inside the Map relative to the map's specified origin. |
+|`heading_radians`	|`float`	| The heading of the robot in radians. Ranges from -PI to PI, with 0.0 pointing along the x-axis. |
 
-##### Pose
+##### JSON Example
+=== "JSON"
+    ```js
+      {
+        "xMeters": 2.5,
+        "yMeters": 3.0,
+        "headingRadians": 1.57
+      }
+    ```
 
-| Name | Type | Description |
-|------|------|-------------|
-| `x_meters` | float | x, y coordinates inside the Map relative to the map’s specified<br>origin. |
-| `y_meters` | float |  |
-| `heading_radians` | float | The heading of the robot in radians. Ranges from -PI to PI, with<br>0.0 pointing along the x-axis. |
+### PoseWithCovariance
+A pose and a covariance matrix.
 
-##### PoseWithCovariance
+| Field  | Message Type | Description |
+|------------|-------------| ---|
+|`pose`   |[`Pose`](#pose)	| The robot pose. |
+|`covariance`	|`double` *repeated*	| A 36-element array, which is a flattened 6×6 covariance matrix in row-major order. Each element represents the covariance between state variables (X, Y, Z, X-axis rotation, Y-axis rotation, Z-axis rotation). |
 
-| Name | Type | Description |
-|------|------|-------------|
-| `pose` | [Pose](#pose) |  |
-| `covariance` | double<br>*repeated* | A 36-element array, which is a flattened 6×6 covariance matrix in<br>row-major order. Each element represents the covariance between state<br>variables (X, Y, Z, X-axis rotation, Y-axis rotation, Z-axis rotation). |
+##### JSON Example
+=== "JSON"
+    ```js
+      {
+        "pose": {
+          "xMeters": 2.5,
+          "yMeters": 3.0,
+          "headingRadians": 1.57
+        },
+        "covariance": []
+      }
+    ```
+
+### OdometryState
+Represents the robot's odometry state.
+
+| Field  | Message Type | Description |
+|------------|-------------| ---|
+|`pose`   |[`Pose`](#pose)	| The current robot pose. |
+|`twist`	|[`Twist`](../common/Math.md#twist)	| A message containing the linear and angular velocity of the robot. A positive linear velocity means the robot is moving forward in the direction of the Pose.heading, while a negative is opposite of the Pose.heading. A positive angular velocity means the robot is turning clockwise when looking from above, and negative is counter-clockwise when looking from above. If twist is 0, i.e. linear and angular velocities are 0, the robot is stationary. |
+
+##### JSON Example
+=== "JSON"
+    ```js
+      {
+        "pose": {
+          "xMeters": 2.5,
+          "yMeters": 3.0,
+          "headingRadians": 1.57
+        },
+        "twist": {
+          "linearX": 0.5,
+          "angularZ": 0.2
+        }
+      }
+    ```

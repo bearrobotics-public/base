@@ -1,40 +1,104 @@
+# Zones
 
+Zones messages provide information about parameter zones on the map.
 
-### Message Types
+## Message Types
 
-##### DirectionZone
+### ParameterZone
+Areas on the map that have specific parameters.
 
-| Name | Type | Description |
-|------|------|-------------|
-| `heading_radians` | float | The direction vector's angle in radians,<br>relative to the map's origin and measured from the x-axis. |
-| `magnitude` | int32 | The magnitude of the direction vector.<br>Typically set to 254 for hard direction zones. The larger the magnitude, <br>the more the robot will try to align with the direction. |
+| Field  | Message Type | Description |
+|------------|-------------| ---|
+|`zone_id`   |`string`	| The ID of the zone. |
+|`points`	|*repeated* [`Point2D`](../common/Math.md#point2d)	| Polygon defining the zone. The minimum number of points is 3. |
+|`direction_zone`	|[`DirectionZone`](#directionzone)	| Direction zone parameters. |
+|`exclusive_zone`	|[`ExclusiveZone`](#exclusivezone)	| Exclusive zone parameters. |
+|`ramp_zone`	|[`RampZone`](#rampzone)	| Ramp zone parameters. |
+|`sound_zone`	|[`SoundZone`](#soundzone)	| Sound zone parameters. |
+|`speed_zone`	|[`SpeedZone`](#speedzone)	| Speed zone parameters. |
 
-##### ExclusiveZone
+##### JSON Example
+=== "JSON"
+    ```js
+      {
+        "zoneId": "zone_001",
+        "points": [
+          {"x": 0.0, "y": 0.0},
+          {"x": 1.0, "y": 0.0},
+          {"x": 1.0, "y": 1.0},
+          {"x": 0.0, "y": 1.0}
+        ],
+        "speedZone": {
+          "maxSpeedMPerSec": 0.5
+        }
+      }
+    ```
 
-| Name | Type | Description |
-|------|------|-------------|
-| `max_robots` | int32 | Maximum number of robots allowed to enter the zone. |
+### DirectionZone
+Defines a direction vector for the zone.
 
-##### ParameterZone
+| Field  | Message Type | Description |
+|------------|-------------| ---|
+|`heading_radians`   |`float`	| The direction vector's angle in radians, relative to the map's origin and measured from the x-axis. |
+|`magnitude`	|`int32`	| The magnitude of the direction vector. Typically set to 254 for hard direction zones. The larger the magnitude, the more the robot will try to align with the direction. |
 
-| Name | Type | Description |
-|------|------|-------------|
-| `zone_id` | string |  |
-| `points` | [Point2D](../common/Math.md)<br>*repeated* | Polygon defining the zone.<br>The minimum number of points is 3. |
-| `direction_zone` | [DirectionZone](#directionzone) |  |
-| `exclusive_zone` | [ExclusiveZone](#exclusivezone) |  |
-| `ramp_zone` | [RampZone](#rampzone) |  |
-| `sound_zone` | [SoundZone](#soundzone) |  |
-| `speed_zone` | [SpeedZone](#speedzone) |  |
+##### JSON Example
+=== "JSON"
+    ```js
+      {
+        "headingRadians": 1.57,
+        "magnitude": 254
+      }
+    ```
 
-##### RampZone
-- *(No fields defined)*
+### ExclusiveZone
+Defines an exclusive zone that limits the number of robots.
 
-##### SoundZone
-- *(No fields defined)*
+| Field  | Message Type | Description |
+|------------|-------------| ---|
+|`max_robots`   |`int32`	| Maximum number of robots allowed to enter the zone. |
 
-##### SpeedZone
+##### JSON Example
+=== "JSON"
+    ```js
+      {
+        "maxRobots": 2
+      }
+    ```
 
-| Name | Type | Description |
-|------|------|-------------|
-| `max_speed_m_per_sec` | float | Speed limit in the zone. |
+### RampZone
+Indicates a ramp zone. No additional parameters are required.
+
+*(No fields defined)*
+
+##### JSON Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+### SoundZone
+Indicates a sound zone. No additional parameters are required.
+
+*(No fields defined)*
+
+##### JSON Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+### SpeedZone
+Defines a speed limit for the zone.
+
+| Field  | Message Type | Description |
+|------------|-------------| ---|
+|`max_speed_m_per_sec`   |`float`	| Speed limit in the zone. |
+
+##### JSON Example
+=== "JSON"
+    ```js
+      {
+        "maxSpeedMPerSec": 0.5
+      }
+    ```

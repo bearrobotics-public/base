@@ -1,49 +1,91 @@
+# System
 
+System messages provide information about the robot's system configuration and allow execution of system commands.
 
-### Message Types
+## Message Types
 
-##### SystemCommand
+### SystemCommand
+System operation to be executed. An empty message for the specified command should be provided. Future commands may provide arguments specific to the command.
 
-| Name | Type | Description |
-|------|------|-------------|
-| `reboot` | [RebootCommand](#systemcommandrebootcommand) |  |
+| Field (*oneof*) | Message Type | Description |
+|------------|-------------| ---|
+|`reboot`   |[`RebootCommand`](#systemcommandrebootcommand)	| Provide an empty RebootCommand message to initiate a reboot. |
 
-###### SystemCommand.RebootCommand
+#### SystemCommand.RebootCommand
+An empty message used to initiate a robot reboot.
 
-- *(No fields defined)*
+*(No fields defined)*
 
-##### SystemInfo
+##### JSON Example
+=== "JSON"
+    ```js
+      {
+        "reboot": {}
+      }
+    ```
 
-| Name | Type | Description |
-|------|------|-------------|
-| `software_version` | string | Distribution version. e.g. `"servi-24.03"` |
-| `firmware_version` | string | Firmware version. e.g. `"3.2.4.1"` |
-| `robot_family` | [RobotFamily](#systeminforobotfamily) | Robot product family. |
-| `robot_id` | string | Unique robot ID. e.g. `"pennybot-abc123"` |
-| `display_name` | string | Display name set for the robot. e.g. `"Sir V"` |
-| `locale_language` | string | IETF language tag represented in string. e.g. `"en-US"` |
-| `wifi_info` | [WifiInfo](Network.md#wifiinfo) | Various information of the wireless interface and connected Wi-Fi network. |
+### SystemInfo
+Provides information related to the system.
 
-###### SystemInfo.RobotFamily
+| Field  | Message Type | Description |
+|------------|-------------| ---|
+|`software_version`   |`string`	| Distribution version. e.g. `"servi-24.03"` |
+|`firmware_version`	|`string`	| Firmware version. e.g. `"3.2.4.1"` |
+|`robot_family`	|[`RobotFamily`](#systeminforobotfamily) *enum*	| Robot product family. |
+|`robot_id`	|`string`	| Unique robot ID. e.g. `"pennybot-abc123"` |
+|`display_name`	|`string`	| Display name set for the robot. e.g. `"Sir V"` |
+|`locale_language`	|`string`	| IETF language tag represented in string. e.g. `"en-US"` |
+|`wifi_info`	|[`WifiInfo`](Network.md#wifiinfo)	| Various information of the wireless interface and connected Wi-Fi network. |
 
-| Name | Number | Description |
-|------|--------|-------------|
-| `ROBOT_FAMILY_UNKNOWN` | 0 | |
-| `ROBOT_FAMILY_SERVI` | 1 | |
-| `ROBOT_FAMILY_SERVI_MINI` | 2 | |
-| `ROBOT_FAMILY_SERVI_PLUS` | 3 | |
-| `ROBOT_FAMILY_SERVI_LIFT` | 4 | |
-
-##### SystemState
-
-| Name | Type | Description |
-|------|------|-------------|
-| `health` | [Health](#systemstatehealth) | State representing whether robot is in a healthy condition. |
-
-###### SystemState.Health
+#### SystemInfo.RobotFamily `enum`
 
 | Name | Number | Description |
 |------|--------|-------------|
-| `HEALTH_UNKNOWN` | 0 | |
-| `HEALTH_OK` | 1 | |
-| `HEALTH_ERROR` | 2 | |
+| `ROBOT_FAMILY_UNKNOWN` | 0 | Default value. |
+| `ROBOT_FAMILY_SERVI` | 1 | Servi robot family. |
+| `ROBOT_FAMILY_SERVI_MINI` | 2 | Servi Mini robot family. |
+| `ROBOT_FAMILY_SERVI_PLUS` | 3 | Servi Plus robot family. |
+| `ROBOT_FAMILY_SERVI_LIFT` | 4 | Servi Lift robot family. |
+
+##### JSON Example
+=== "JSON"
+    ```js
+      {
+        "softwareVersion": "servi-24.03",
+        "firmwareVersion": "3.2.4.1",
+        "robotFamily": "ROBOT_FAMILY_SERVI",
+        "robotId": "pennybot-abc123",
+        "displayName": "Sir V",
+        "localeLanguage": "en-US",
+        "wifiInfo": {
+          "currentSsid": "MyWiFiNetwork",
+          "cidrIp": "192.168.1.123/24",
+          "gatewayIp": "192.168.1.1",
+          "macAddress": "aa:1a:a1:a1:1a:11",
+          "dnsIps": ["8.8.8.8", "8.8.4.4"]
+        }
+      }
+    ```
+
+### SystemState
+Represents the system health state.
+
+| Field  | Message Type | Description |
+|------------|-------------| ---|
+|`health`   |[`Health`](#systemstatehealth) *enum*	| State representing whether robot is in a healthy condition. |
+
+#### SystemState.Health `enum`
+
+| Name | Number | Description |
+|------|--------|-------------|
+| `HEALTH_UNKNOWN` | 0 | Default value. |
+| `HEALTH_OK` | 1 | Robot is in a healthy condition. |
+| `HEALTH_ERROR` | 2 | Robot has health issues. |
+
+##### JSON Example
+=== "JSON"
+    ```js
+      {
+        "health": "HEALTH_OK"
+      }
+    ```
