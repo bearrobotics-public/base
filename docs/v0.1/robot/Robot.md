@@ -62,8 +62,8 @@ Represents the robot's odometry state.
           "headingRadians": 1.57
         },
         "twist": {
-          "linearX": 0.5,
-          "angularZ": 0.2
+          "linearVelocity": 0.5,
+          "angularVelocity": 0.2
         }
       }
     ```

@@ -28,7 +28,7 @@ Represents the current localization state.
 
 | Field  | Message Type | Description |
 |------------|-------------| ---|
-|`state`   |[`State`](#localizationstatestate) *enum*	| The current localization state. |
+|`state`   |[`State`](#localizationstatestate-enum) *enum*	| The current localization state. |
 
 #### LocalizationState.State `enum`
 

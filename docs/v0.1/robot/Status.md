@@ -10,8 +10,8 @@ Represents the state of the robot's battery system.
 | Field  | Message Type | Description |
 |------------|-------------| ---|
 |`charge_percent`   |`int32`	| State of charge from 0 (battery empty) to 100 (battery full). |
-|`state`	|[`State`](#batterystatestate) *enum*	| The current battery state. |
-|`charge_method`	|[`ChargeMethod`](#batterystatechargemethod) *enum*	| The method used for charging. |
+|`state`	|[`State`](#batterystatestate-enum) *enum*	| The current battery state. |
+|`charge_method`	|[`ChargeMethod`](#batterystatechargemethod-enum) *enum*	| The method used for charging. |
 
 #### BatteryState.State `enum`
 
@@ -46,7 +46,7 @@ Represents the emergency stop state.
 
 | Field  | Message Type | Description |
 |------------|-------------| ---|
-|`emergency`   |[`Emergency`](#emergencystopstateemergency) *enum*	| The emergency stop state. |
+|`emergency`   |[`Emergency`](#emergencystopstateemergency-enum) *enum*	| The emergency stop state. |
 
 #### EmergencyStopState.Emergency `enum`
 
@@ -69,12 +69,12 @@ High-level representation of various operating behavior on the robot.
 
 | Field  | Message Type | Description |
 |------------|-------------| ---|
-|`system`   |[`System`](#operationstatesystem) *enum*	| Represents overall health of the robot. (e.g. whether a hardware device is reachable) |
+|`system`   |[`System`](#operationstatesystem-enum) *enum*	| Represents overall health of the robot. (e.g. whether a hardware device is reachable) |
 |`system_message`	|`string`	| Optional message for human readability. Could be empty. |
-|`emergency`	|[`Emergency`](#operationstateemergency) *enum*	| Represents the robot's current emergency state. Based on the physical e-stop button and software e-stop. |
+|`emergency`	|[`Emergency`](#operationstateemergency-enum) *enum*	| Represents the robot's current emergency state. Based on the physical e-stop button and software e-stop. |
 |`emergency_message`	|`string`	| Optional message for human readability. Could be empty. |
-|`charging`	|[`Charging`](#operationstatecharging) *enum*	| Represents the robot's current charging behavior. Certain charging methods may limit what actions the robot is able to take. |
-|`mission`	|[`Mission`](#operationstatemission) *enum*	| Represents any mission-related action being in progress on the robot. |
+|`charging`	|[`Charging`](#operationstatecharging-enum) *enum*	| Represents the robot's current charging behavior. Certain charging methods may limit what actions the robot is able to take. |
+|`mission`	|[`Mission`](#operationstatemission-enum) *enum*	| Represents any mission-related action being in progress on the robot. |
 
 #### OperationState.System `enum`
 

@@ -40,7 +40,7 @@ Destinations are used to define the single point of interest.
 |`destination_id`   |`string`	| The ID of the destination. |
 |`display_name`	|`string`	| The display name of the destination. |
 |`destination_pose`	|[`PointWithOrientation`](../common/Math.md#pointwithorientation)	| Position on the map where the robot would try to navigate to and orient itself along that direction. |
-|`type`	|[`Type`](#destinationtype) *enum*	| The type of the destination. |
+|`type`	|[`Type`](#destinationtype-enum) *enum*	| The type of the destination. |
 |`docking_param`	|[`DockingParam`](#dockingparam)	| DockingParam is used to specify the docking process at the destination. If docking_param exists, docking is needed. If docking_param does not exist, no docking is needed. |
 |`default_type_data`	|[`StringMapData`](#stringmapdata)	| Data specific to the destination type. The robot will use this data to interact with the destination. |
 
@@ -78,8 +78,8 @@ DockingParam is used to specify the docking process at the destination.
 
 | Field  | Message Type | Description |
 |------------|-------------| ---|
-|`type`   |[`Type`](#dockingparamtype) *enum*	| The type of docking process. |
-|`reference`	|[`Reference`](#dockingparamreference) *enum*	| The reference used to specify the docking position. |
+|`type`   |[`Type`](#dockingparamtype-enum) *enum*	| The type of docking process. |
+|`reference`	|[`Reference`](#dockingparamreference-enum) *enum*	| The reference used to specify the docking position. |
 |`reference_id`	|`string`	| The ID of the reference. |
 |`tuning_params`	|[`Point2D`](../common/Math.md#point2d)	| The tuning parameters are used to define relative docking pose to the reference. |
 
@@ -138,7 +138,7 @@ Areas on the map that the robot will try to avoid.
 |------------|-------------| ---|
 |`obstacle_id`   |`string`	| The ID of the obstacle. |
 |`points`	|*repeated* [`Point2D`](../common/Math.md#point2d)	| Points that define a polygon where the robot should avoid entering. The minimum number of points is 3. |
-|`type`	|[`Type`](#obstacletype) *enum*	| The type of the obstacle. |
+|`type`	|[`Type`](#obstacletype-enum) *enum*	| The type of the obstacle. |
 
 #### Obstacle.Type `enum`
 

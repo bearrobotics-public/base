@@ -31,7 +31,7 @@ Provides information related to the system.
 |------------|-------------| ---|
 |`software_version`   |`string`	| Distribution version. e.g. `"servi-24.03"` |
 |`firmware_version`	|`string`	| Firmware version. e.g. `"3.2.4.1"` |
-|`robot_family`	|[`RobotFamily`](#systeminforobotfamily) *enum*	| Robot product family. |
+|`robot_family`	|[`RobotFamily`](#systeminforobotfamily-enum) *enum*	| Robot product family. |
 |`robot_id`	|`string`	| Unique robot ID. e.g. `"pennybot-abc123"` |
 |`display_name`	|`string`	| Display name set for the robot. e.g. `"Sir V"` |
 |`locale_language`	|`string`	| IETF language tag represented in string. e.g. `"en-US"` |
@@ -72,7 +72,7 @@ Represents the system health state.
 
 | Field  | Message Type | Description |
 |------------|-------------| ---|
-|`health`   |[`Health`](#systemstatehealth) *enum*	| State representing whether robot is in a healthy condition. |
+|`health`   |[`Health`](#systemstatehealth-enum) *enum*	| State representing whether robot is in a healthy condition. |
 
 #### SystemState.Health `enum`
 

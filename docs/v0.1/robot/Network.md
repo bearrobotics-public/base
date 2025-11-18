@@ -66,8 +66,8 @@ Represents a Wi-Fi network.
 |------------|-------------| ---|
 |`ssid`   |`string`	| SSID of Wi-Fi network. |
 |`signal_strength`	|`int32`	| Signal strength of the connected Wi-Fi connection in intervals of 5, within a range of 0 to 100. |
-|`security`	|[`Security`](#wifisecurity) *enum*	| Security requirements for the network. |
-|`connected_state`	|[`Connection`](#wificonnection) *enum*	| Currently connected Wi-Fi state. |
+|`security`	|[`Security`](#wifisecurity-enum) *enum*	| Security requirements for the network. |
+|`connected_state`	|[`Connection`](#wificonnection-enum) *enum*	| Currently connected Wi-Fi state. |
 
 #### Wifi.Security `enum`
 

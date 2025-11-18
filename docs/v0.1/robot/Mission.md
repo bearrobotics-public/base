@@ -1,6 +1,6 @@
 # Mission
 
-[Missions](../../concepts/mission.md#missions) are atomic units of behavior that define a robot's high-level actions.
+Missions are atomic units of behavior that define a robot's high-level actions.
 This API enables users to control robot behavior—from simple navigation
 tasks to complex, conditional workflows.
 
@@ -62,7 +62,7 @@ Represents a mission.
 
 | Field  | Message Type | Description |
 |------------|-------------| ---|
-|`type`   |[`Type`](#missiontype) *enum*	| The type of the mission. |
+|`type`   |[`Type`](#missiontype-enum) *enum*	| The type of the mission. |
 |`goals`	|*repeated* [`Goal`](#goal)	| The list of goals or destinations for the mission. |
 |`override_params`	|[`MissionParams`](#missionparams)	| Override parameters for the mission settings, allowing specific configuration for this mission instance. |
 
@@ -100,7 +100,7 @@ Action to update a current mission.
 | Field  | Message Type | Description |
 |------------|-------------| ---|
 |`mission_id`   |`string`	| The ID of the mission to control. |
-|`command`	|[`Command`](#missioncommandcommand) *enum*	| Command to update the state of an active mission. |
+|`command`	|[`Command`](#missioncommandcommand-enum) *enum*	| Command to update the state of an active mission. |
 
 #### MissionCommand.Command `enum`
 
@@ -141,7 +141,7 @@ Override parameters for the mission settings.
 
 | Field  | Message Type | Description |
 |------------|-------------| ---|
-|`mode`   |[`Mode`](#missionparamsmode) *enum*	| The mode for the traverse mission. |
+|`mode`   |[`Mode`](#missionparamsmode-enum) *enum*	| The mode for the traverse mission. |
 
 ##### JSON Example
 === "JSON"
@@ -157,7 +157,7 @@ Override parameters for the mission settings.
 
 | Field  | Message Type | Description |
 |------------|-------------| ---|
-|`mode`   |[`Mode`](#missionparamsmode) *enum*	| The mode for the loop mission. |
+|`mode`   |[`Mode`](#missionparamsmode-enum) *enum*	| The mode for the loop mission. |
 
 ##### JSON Example
 === "JSON"
@@ -175,10 +175,10 @@ Represents a mission state.
 | Field  | Message Type | Description |
 |------------|-------------| ---|
 |`mission_id`   |`string`	| Unique identifier for the mission. |
-|`state`	|[`State`](#missionstatestate) *enum*	| Current lifecycle state of the mission. |
+|`state`	|[`State`](#missionstatestate-enum) *enum*	| Current lifecycle state of the mission. |
 |`goals`	|*repeated* [`Goal`](#goal)	| All goals for a given mission. |
 |`current_goal_index`	|`int32`	| Index of the currently active goal in the goals list. |
-|`navigation_status`	|[`NavigationStatus`](#missionstatenavigationstatus) *enum*	| The current navigation status of the mission, reflecting the robot's progress toward or at its destination. |
+|`navigation_status`	|[`NavigationStatus`](#missionstatenavigationstatus-enum) *enum*	| The current navigation status of the mission, reflecting the robot's progress toward or at its destination. |
 |`feedback`	|[`Any`](https://protobuf.dev/reference/protobuf/google.protobuf/#any)	| Mission-specific feedback data. |
 
 #### MissionState.State `enum`
