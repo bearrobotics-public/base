@@ -1,16 +1,40 @@
+# Settings
 
+Settings messages allow configuration of robot settings.
 
-### Message Types
+## Message Types
 
-##### Setting
+### Setting
+A single setting key-value pair.
 
-| Name | Type | Description |
-|------|------|-------------|
-| `key` | string |  |
-| `value` | string |  |
+| Field  | Message Type | Description |
+|------------|-------------| ---|
+|`key`   |`string`	| The setting key. |
+|`value`	|`string`	| The setting value. Both key and values are strings so types for each value must be filled as a string. |
 
-##### SettingsState
+##### JSON Example
+=== "JSON"
+    ```js
+      {
+        "key": "robot-max-vel-x",
+        "value": "0.8"
+      }
+    ```
 
-| Name | Type | Description |
-|------|------|-------------|
-| `settings` | map<string, string\> | A map where each item is a pair of setting key and value. |
+### SettingsState
+Represents the current settings state.
+
+| Field  | Message Type | Description |
+|------------|-------------| ---|
+|`settings`   |`map<string, string>`	| A map where each item is a pair of setting key and value. |
+
+##### JSON Example
+=== "JSON"
+    ```js
+      {
+        "settings": {
+          "robot-max-vel-x": "0.8",
+          "robot-enable-motors-coast-in-idle": "True"
+        }
+      }
+    ```

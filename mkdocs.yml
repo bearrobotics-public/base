@@ -9,6 +9,7 @@ theme:
     - navigation.top
     - navigation.tabs
     - toc.follow
+    - content.tabs.link
   palette:
     primary: custom
   favicon: assets/favicon.png
@@ -16,12 +17,22 @@ theme:
 extra_css:
     - stylesheets/extra.css
 markdown_extensions:
+  - admonition
   - toc:
       permalink: True
       toc_depth: 4
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.details
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
 nav:
   - API Reference:
     - v0.1 (current):

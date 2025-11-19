@@ -253,29 +253,70 @@ The definition of Bear Robot API service.
 
 ## Message Types
 
-##### AppendMissionRequest
+#### AppendMissionRequest
 
 | Name      | Type                          | Description |
 | --------- | ----------------------------- | ----------- |
-| `mission` | [Mission](Mission.md#mission) |             |
+| `mission` | [Mission](Mission.md#mission) | The mission to append to the queue. |
 
-##### AppendMissionResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {
+        "mission": {
+          "type": "TYPE_ONEOFF",
+          "goals": [
+            {
+              "pose": {
+                "xMeters": 2.5,
+                "yMeters": 3.0,
+                "headingRadians": 1.57
+              }
+            }
+          ]
+        }
+      }
+    ```
+
+#### AppendMissionResponse
 
 | Name         | Type   | Description                                    |
 | ------------ | ------ | ---------------------------------------------- |
 | `mission_id` | string | The unique identifier of the appended mission. |
 
-##### ChargeRobotRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "missionId": "cbd47ab1-df21-479e-9f72-677b81ab55b0"
+      }
+    ```
+
+#### ChargeRobotRequest
 
 - _(No fields defined)_
 
-##### ChargeRobotResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### ChargeRobotResponse
 
 | Name         | Type   | Description |
 | ------------ | ------ | ----------- |
-| `mission_id` | string |             |
+| `mission_id` | string | The ID of the mission created. |
 
-##### ConnectWifiRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "missionId": "mission-xyz-001"
+      }
+    ```
+
+#### ConnectWifiRequest
 
 | Name                 | Type                                              | Description                                                                                |
 | -------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -283,250 +324,782 @@ The definition of Bear Robot API service.
 | `authentication`     | [Authentication](Network.md#authentication)       | Security details for the network.<br>This field can be omitted if the network is unsecure. |
 | `connection_options` | [ConnectionOptions](Network.md#connectionoptions) | Optional parameters for static IP configuration.                                           |
 
-##### ConnectWifiResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {
+        "ssid": "MyWiFiNetwork",
+        "authentication": {
+          "password": "mypassword"
+        }
+      }
+    ```
+
+#### ConnectWifiResponse
 
 - _(No fields defined)_
 
-##### CreateMissionRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### CreateMissionRequest
 
 | Name      | Type                          | Description |
 | --------- | ----------------------------- | ----------- |
-| `mission` | [Mission](Mission.md#mission) |             |
+| `mission` | [Mission](Mission.md#mission) | The mission to create. |
 
-##### CreateMissionResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {
+        "mission": {
+          "type": "TYPE_ONEOFF",
+          "goals": [
+            {
+              "pose": {
+                "xMeters": 2.5,
+                "yMeters": 3.0,
+                "headingRadians": 1.57
+              }
+            }
+          ]
+        }
+      }
+    ```
+
+#### CreateMissionResponse
 
 | Name         | Type   | Description |
 | ------------ | ------ | ----------- |
-| `mission_id` | string |             |
+| `mission_id` | string | The ID of the mission created. |
 
-##### DriveRobotRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "missionId": "cbd47ab1-df21-479e-9f72-677b81ab55b0"
+      }
+    ```
+
+#### DriveRobotRequest
 
 | Name    | Type                             | Description                                            |
 | ------- | -------------------------------- | ------------------------------------------------------ |
 | `twist` | [Twist](../common/Math.md#twist) | The desired max linear and angular velocity to travel. |
 
-##### DriveRobotResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {
+        "twist": {
+          "linearVelocity": 0.5,
+          "angularVelocity": 0.2
+        }
+      }
+    ```
+
+#### DriveRobotResponse
 
 - _(No fields defined)_
 
-##### ForgetWifiRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### ForgetWifiRequest
 
 | Name   | Type   | Description |
 | ------ | ------ | ----------- |
-| `ssid` | string |             |
+| `ssid` | string | SSID of the Wi-Fi network to forget. |
 
-##### ForgetWifiResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {
+        "ssid": "MyWiFiNetwork"
+      }
+    ```
+
+#### ForgetWifiResponse
 
 - _(No fields defined)_
 
-##### GetLocationRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### GetLocationRequest
 
 - _(No fields defined)_
 
-##### GetLocationResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### GetLocationResponse
 
 | Name       | Type                                         | Description |
 | ---------- | -------------------------------------------- | ----------- |
-| `location` | [Location](../location/Location.md#location) |             |
+| `location` | [Location](../location/Location.md#location) | The current location data to which the robot is connected. |
 
-##### GetMapContentRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "location": {
+          "locationId": "4RVF",
+          "displayName": "City Deli & Grill",
+          "floors": {
+            "0": {
+              "displayName": "Ground",
+              "sections": [
+                {
+                  "displayName": "Main Floor",
+                  "mapIds": ["9578"],
+                  "currentMapId": "9578"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ```
+
+#### GetMapContentRequest
 
 - _(No fields defined)_
 
-##### GetMapContentResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### GetMapContentResponse
 
 | Name          | Type                                        | Description |
 | ------------- | ------------------------------------------- | ----------- |
-| `map_content` | [MapContent](../location/Map.md#mapcontent) |             |
+| `map_content` | [MapContent](../location/Map.md#mapcontent) | The current map content data loaded on the robot. |
 
-##### GetSystemInfoRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "mapContent": {
+          "mapId": "9578",
+          "data": {
+            "data": "<base64_encoded_png_data>",
+            "origin": {
+              "xM": 0.0,
+              "yM": 0.0,
+              "yawRadians": 0.0
+            },
+            "mPerPixel": 0.05
+          },
+          "annotation": {
+            "destinations": []
+          }
+        }
+      }
+    ```
+
+#### GetSystemInfoRequest
 
 - _(No fields defined)_
 
-##### GetSystemInfoResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### GetSystemInfoResponse
 
 | Name          | Type                               | Description |
 | ------------- | ---------------------------------- | ----------- |
-| `system_info` | [SystemInfo](System.md#systeminfo) |             |
+| `system_info` | [SystemInfo](System.md#systeminfo) | The robot system information. |
 
-##### ListWifiConnectionsRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "systemInfo": {
+          "softwareVersion": "servi-24.03",
+          "firmwareVersion": "3.2.4.1",
+          "robotFamily": "ROBOT_FAMILY_SERVI",
+          "robotId": "pennybot-abc123",
+          "displayName": "Sir V",
+          "localeLanguage": "en-US",
+          "wifiInfo": {
+            "currentSsid": "MyWiFiNetwork",
+            "cidrIp": "192.168.1.123/24",
+            "gatewayIp": "192.168.1.1",
+            "macAddress": "aa:1a:a1:a1:1a:11",
+            "dnsIps": ["8.8.8.8", "8.8.4.4"]
+          }
+        }
+      }
+    ```
+
+#### ListWifiConnectionsRequest
 
 - _(No fields defined)_
 
-##### ListWifiConnectionsResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### ListWifiConnectionsResponse
 
 | Name               | Type                                          | Description |
 | ------------------ | --------------------------------------------- | ----------- |
-| `wifi_connections` | [WifiConnections](Network.md#wificonnections) |             |
+| `wifi_connections` | [WifiConnections](Network.md#wificonnections) | Lists of remembered and available Wi-Fi networks. |
 
-##### LocalizeRobotRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "wifiConnections": {
+          "savedNetworks": [
+            {
+              "ssid": "MyWiFiNetwork",
+              "signalStrength": 85,
+              "security": "SECURITY_PASSWORD_SECURED",
+              "connectedState": "CONNECTION_BEAR_CONNECTED"
+            }
+          ],
+          "availableNetworks": [
+            {
+              "ssid": "OtherNetwork",
+              "signalStrength": 60,
+              "security": "SECURITY_UNSECURED",
+              "connectedState": "CONNECTION_UNKNOWN"
+            }
+          ]
+        }
+      }
+    ```
+
+#### LocalizeRobotRequest
 
 | Name   | Type                                                 | Description |
 | ------ | ---------------------------------------------------- | ----------- |
-| `goal` | [LocalizationGoal](Localization.md#localizationgoal) |             |
+| `goal` | [LocalizationGoal](Localization.md#localizationgoal) | The localization goal. The robot must be placed within a 5x5 meter window from the localization goal. |
 
-##### LocalizeRobotResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {
+        "goal": {
+          "pose": {
+            "xMeters": 2.5,
+            "yMeters": 3.0,
+            "headingRadians": 1.57
+          }
+        }
+      }
+    ```
+
+#### LocalizeRobotResponse
 
 - _(No fields defined)_
 
-##### RunSystemCommandRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### RunSystemCommandRequest
 
 | Name             | Type                                     | Description |
 | ---------------- | ---------------------------------------- | ----------- |
-| `system_command` | [SystemCommand](System.md#systemcommand) |             |
+| `system_command` | [SystemCommand](System.md#systemcommand) | The system command to execute. |
 
-##### RunSystemCommandResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {
+        "systemCommand": {
+          "reboot": {}
+        }
+      }
+    ```
+
+#### RunSystemCommandResponse
 
 - _(No fields defined)_
 
-##### SetEmergencyStopRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### SetEmergencyStopRequest
 
 | Name           | Type                                               | Description |
 | -------------- | -------------------------------------------------- | ----------- |
-| `e_stop_state` | [EmergencyStopState](Status.md#emergencystopstate) |             |
+| `e_stop_state` | [EmergencyStopState](Status.md#emergencystopstate) | The emergency stop state to set. |
 
-##### SetEmergencyStopResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {
+        "eStopState": {
+          "emergency": "EMERGENCY_ENGAGED"
+        }
+      }
+    ```
+
+#### SetEmergencyStopResponse
 
 - _(No fields defined)_
 
-##### SetPoseRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### SetPoseRequest
 
 | Name                   | Type                                              | Description                                                                                                |
 | ---------------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | `pose_with_covariance` | [PoseWithCovariance](Robot.md#posewithcovariance) | A pose and a covariance matrix, if the covariance is not set, the internal default values will be applied. |
 
-##### SetPoseResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {
+        "poseWithCovariance": {
+          "pose": {
+            "xMeters": 2.5,
+            "yMeters": 3.0,
+            "headingRadians": 1.57
+          },
+          "covariance": []
+        }
+      }
+    ```
+
+#### SetPoseResponse
 
 - _(No fields defined)_
 
-##### SetSettingRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### SetSettingRequest
 
 | Name      | Type                           | Description |
 | --------- | ------------------------------ | ----------- |
-| `setting` | [Setting](Settings.md#setting) |             |
+| `setting` | [Setting](Settings.md#setting) | The setting to set. |
 
-##### SetSettingResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {
+        "setting": {
+          "key": "robot-max-vel-x",
+          "value": "0.8"
+        }
+      }
+    ```
+
+#### SetSettingResponse
 
 - _(No fields defined)_
 
-##### SubscribeBatteryStatusRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### SubscribeBatteryStatusRequest
 
 - _(No fields defined)_
 
-##### SubscribeBatteryStatusResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### SubscribeBatteryStatusResponse
 
 | Name            | Type                                                    | Description |
 | --------------- | ------------------------------------------------------- | ----------- |
-| `metadata`      | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
-| `battery_state` | [BatteryState](Status.md#batterystate)                  |             |
+| `metadata`      | [EventMetadata](../common/Annotations.md#eventmetadata) | Event metadata including timestamp and sequence number. |
+| `battery_state` | [BatteryState](Status.md#batterystate)                  | The current battery state. |
 
-##### SubscribeEmergencyStopStatusRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "metadata": {
+          "timestamp": "2025-04-01T15:30:00Z",
+          "sequenceNumber": 128
+        },
+        "batteryState": {
+          "chargePercent": 85,
+          "state": "STATE_CHARGING",
+          "chargeMethod": "CHARGE_METHOD_WIRELESS"
+        }
+      }
+    ```
+
+#### SubscribeEmergencyStopStatusRequest
 
 - _(No fields defined)_
 
-##### SubscribeEmergencyStopStatusResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### SubscribeEmergencyStopStatusResponse
 
 | Name           | Type                                                    | Description |
 | -------------- | ------------------------------------------------------- | ----------- |
-| `metadata`     | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
-| `e_stop_state` | [EmergencyStopState](Status.md#emergencystopstate)      |             |
+| `metadata`     | [EventMetadata](../common/Annotations.md#eventmetadata) | Event metadata including timestamp and sequence number. |
+| `e_stop_state` | [EmergencyStopState](Status.md#emergencystopstate)      | The current emergency stop state. |
 
-##### SubscribeLocalizationStatusRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "metadata": {
+          "timestamp": "2025-04-01T15:30:00Z",
+          "sequenceNumber": 128
+        },
+        "eStopState": {
+          "emergency": "EMERGENCY_DISENGAGED"
+        }
+      }
+    ```
+
+#### SubscribeLocalizationStatusRequest
 
 - _(No fields defined)_
 
-##### SubscribeLocalizationStatusResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### SubscribeLocalizationStatusResponse
 
 | Name                 | Type                                                     | Description |
 | -------------------- | -------------------------------------------------------- | ----------- |
-| `metadata`           | [EventMetadata](../common/Annotations.md#eventmetatdata) |             |
-| `localization_state` | [LocalizationState](Localization.md#localizationstate)   |             |
+| `metadata`           | [EventMetadata](../common/Annotations.md#eventmetadata) | Event metadata including timestamp and sequence number. |
+| `localization_state` | [LocalizationState](Localization.md#localizationstate)   | The current localization state. |
 
-##### SubscribeMissionStatusRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "metadata": {
+          "timestamp": "2025-04-01T15:30:00Z",
+          "sequenceNumber": 128
+        },
+        "localizationState": {
+          "state": "STATE_LOCALIZING"
+        }
+      }
+    ```
+
+#### SubscribeMissionStatusRequest
 
 - _(No fields defined)_
 
-##### SubscribeMissionStatusResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### SubscribeMissionStatusResponse
 
 | Name            | Type                                                    | Description |
 | --------------- | ------------------------------------------------------- | ----------- |
-| `metadata`      | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
-| `mission_state` | [MissionState](Mission.md#missionstate)                 |             |
+| `metadata`      | [EventMetadata](../common/Annotations.md#eventmetadata) | Event metadata including timestamp and sequence number. |
+| `mission_state` | [MissionState](Mission.md#missionstate)                 | The current mission state of the robot. |
 
-##### SubscribeNetworkStatusRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "metadata": {
+          "timestamp": "2025-04-01T15:30:00Z",
+          "sequenceNumber": 128
+        },
+        "missionState": {
+          "missionId": "d6637a14-5f6b-43f6-bd86-cc1871a8322e",
+          "state": "STATE_RUNNING",
+          "goals": [
+            {
+              "pose": {
+                "xMeters": 4.2,
+                "yMeters": 7.8,
+                "headingRadians": 1.57
+              }
+            }
+          ],
+          "currentGoalIndex": 1,
+          "navigationStatus": "NAVIGATION_STATUS_NAVIGATING"
+        }
+      }
+    ```
+
+#### SubscribeNetworkStatusRequest
 
 - _(No fields defined)_
 
-##### SubscribeNetworkStatusResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### SubscribeNetworkStatusResponse
 
 | Name            | Type                                                    | Description |
 | --------------- | ------------------------------------------------------- | ----------- |
-| `metadata`      | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
-| `network_state` | [NetworkState](Network.md#networkstate)                 |             |
+| `metadata`      | [EventMetadata](../common/Annotations.md#eventmetadata) | Event metadata including timestamp and sequence number. |
+| `network_state` | [NetworkState](Network.md#networkstate)                 | The current network state. |
 
-##### SubscribeOdometryStatusRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "metadata": {
+          "timestamp": "2025-04-01T15:30:00Z",
+          "sequenceNumber": 128
+        },
+        "networkState": {
+          "connectedWifi": {
+            "ssid": "MyWiFiNetwork",
+            "signalStrength": 85,
+            "security": "SECURITY_PASSWORD_SECURED",
+            "connectedState": "CONNECTION_BEAR_CONNECTED"
+          }
+        }
+      }
+    ```
+
+#### SubscribeOdometryStatusRequest
 
 - _(No fields defined)_
 
-##### SubscribeOdometryStatusResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### SubscribeOdometryStatusResponse
 
 | Name             | Type                                                    | Description |
 | ---------------- | ------------------------------------------------------- | ----------- |
-| `metadata`       | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
-| `odometry_state` | [OdometryState](Robot.md#odometrystate)                 |             |
+| `metadata`       | [EventMetadata](../common/Annotations.md#eventmetadata) | Event metadata including timestamp and sequence number. |
+| `odometry_state` | [OdometryState](Robot.md#odometrystate)                 | The current odometry state. |
 
-##### SubscribeOperationStatusRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "metadata": {
+          "timestamp": "2025-04-01T15:30:00Z",
+          "sequenceNumber": 128
+        },
+        "odometryState": {
+          "pose": {
+            "xMeters": 2.5,
+            "yMeters": 3.0,
+            "headingRadians": 1.57
+          },
+          "twist": {
+            "linearVelocity": 0.5,
+            "angularVelocity": 0.2
+          }
+        }
+      }
+    ```
+
+#### SubscribeOperationStatusRequest
 
 - _(No fields defined)_
 
-##### SubscribeOperationStatusResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### SubscribeOperationStatusResponse
 
 | Name              | Type                                                    | Description |
 | ----------------- | ------------------------------------------------------- | ----------- |
-| `metadata`        | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
-| `operation_state` | [OperationState](Status.md#operationstate)              |             |
+| `metadata`        | [EventMetadata](../common/Annotations.md#eventmetadata) | Event metadata including timestamp and sequence number. |
+| `operation_state` | [OperationState](Status.md#operationstate)              | The current operation state. |
 
-##### SubscribeRobotPoseRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "metadata": {
+          "timestamp": "2025-04-01T15:30:00Z",
+          "sequenceNumber": 128
+        },
+        "operationState": {
+          "system": "SYSTEM_OK",
+          "systemMessage": "",
+          "emergency": "EMERGENCY_DISENGAGED",
+          "emergencyMessage": "",
+          "charging": "CHARGING_DISCHARGING",
+          "mission": "MISSION_IDLE"
+        }
+      }
+    ```
+
+#### SubscribeRobotPoseRequest
 
 - _(No fields defined)_
 
-##### SubscribeRobotPoseResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### SubscribeRobotPoseResponse
 
 | Name       | Type                                                    | Description |
 | ---------- | ------------------------------------------------------- | ----------- |
-| `metadata` | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
-| `pose`     | [Pose](Robot.md#pose)                                   |             |
+| `metadata` | [EventMetadata](../common/Annotations.md#eventmetadata) | Event metadata including timestamp and sequence number. |
+| `pose`     | [Pose](Robot.md#pose)                                   | The current robot pose. |
 
-##### SubscribeSettingsRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "metadata": {
+          "timestamp": "2025-04-01T15:30:00Z",
+          "sequenceNumber": 128
+        },
+        "pose": {
+          "xMeters": 2.5,
+          "yMeters": 3.0,
+          "headingRadians": 1.57
+        }
+      }
+    ```
+
+#### SubscribeSettingsRequest
 
 - _(No fields defined)_
 
-##### SubscribeSettingsResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {}
+    ```
+
+#### SubscribeSettingsResponse
 
 | Name             | Type                                                    | Description |
 | ---------------- | ------------------------------------------------------- | ----------- |
-| `metadata`       | [EventMetadata](../common/Annotations.md#eventmetadata) |             |
-| `settings_state` | [SettingsState](Settings.md#settingsstate)              |             |
+| `metadata`       | [EventMetadata](../common/Annotations.md#eventmetadata) | Event metadata including timestamp and sequence number. |
+| `settings_state` | [SettingsState](Settings.md#settingsstate)              | The current settings state. |
 
-##### SwitchMapRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "metadata": {
+          "timestamp": "2025-04-01T15:30:00Z",
+          "sequenceNumber": 128
+        },
+        "settingsState": {
+          "settings": {
+            "robot-max-vel-x": "0.8",
+            "robot-enable-motors-coast-in-idle": "True"
+          }
+        }
+      }
+    ```
+
+#### SwitchMapRequest
 
 | Name            | Type  | Description |
 | --------------- | ----- | ----------- |
-| `floor_level`   | int32 |             |
-| `section_index` | int32 |             |
+| `floor_level`   | int32 | The floor level to switch to. |
+| `section_index` | int32 | The section index to switch to. |
 
-##### SwitchMapResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {
+        "floorLevel": 0,
+        "sectionIndex": 0
+      }
+    ```
+
+#### SwitchMapResponse
 
 | Name     | Type   | Description |
 | -------- | ------ | ----------- |
-| `map_id` | string |             |
+| `map_id` | string | The ID of the switched map. |
 
-##### UpdateMissionRequest
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {
+        "mapId": "9578"
+      }
+    ```
+
+#### UpdateMissionRequest
 
 | Name              | Type                                        | Description |
 | ----------------- | ------------------------------------------- | ----------- |
-| `mission_command` | [MissionCommand](Mission.md#missioncommand) |             |
+| `mission_command` | [MissionCommand](Mission.md#missioncommand) | Command to update the state of an active mission. |
 
-##### UpdateMissionResponse
+##### JSON Request Example
+=== "JSON"
+    ```js
+      {
+        "missionCommand": {
+          "missionId": "f842c8ac-62de-412e-90fb-bf37022db2f4",
+          "command": "COMMAND_PAUSE"
+        }
+      }
+    ```
+
+#### UpdateMissionResponse
 
 - _(No fields defined)_
+
+##### JSON Response Example
+=== "JSON"
+    ```js
+      {}
+    ```
