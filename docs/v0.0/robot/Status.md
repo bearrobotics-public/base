@@ -16,8 +16,8 @@
 
 #### OdometryState
   - **Fields:**
-    - `pose` [(Pose)](#pose): Current robot position and orientation
-    - `twist` [(Twist)](../../common/Math/#twist): A message containing the linear and angular velocity of the robot.
+    - `pose` [(Pose)](Robot.md#pose): Current robot position and orientation
+    - `twist` [(Twist)](../common/Math.md#twist): A message containing the linear and angular velocity of the robot.
 
 A positive linear velocity means the robot is moving forward in the
 direction of the Pose.heading, while a negative is opposite of the
