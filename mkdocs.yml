@@ -35,7 +35,17 @@ markdown_extensions:
   - attr_list
 nav:
   - API Reference:
-    - v0.1 (current):
+    - v1.3:
+      - gRPC API:
+        - Mission: v1.3/resources/Mission.md
+        - Locations & Maps: v1.3/resources/LocationsAndMaps.md
+        - Localization & Navigation: v1.3/resources/LocalizationAndNavigation.md
+        - Robot Status: v1.3/resources/RobotStatus.md
+        - Robot System: v1.3/resources/RobotSystem.md
+        - Settings: v1.3/resources/Settings.md
+        - Servi: v1.3/resources/Servi.md
+        - Carti: v1.3/resources/Carti.md
+    - v0.1:
       - Services:
         - RobotAPIService: v0.1/robot/RobotApiService.md
       - Message Types:
@@ -69,6 +79,11 @@ nav:
           - Robot: v0.0/robot/Robot.md
           - Status: v0.0/robot/Status.md
           - System: v0.0/robot/System.md
+  - Core Concepts:
+    - Mission: concepts/mission.md
+    - Localization: concepts/localization.md
+    - Location: concepts/location.md
+    - Status: concepts/status.md
   - Guides:
     - Setup:
       - Network Connectivity: guides/setup/setup_network.md

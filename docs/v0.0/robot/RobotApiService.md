@@ -562,48 +562,48 @@ twist {
 #### ConnectWifiRequest
   - **Fields:**
     - `ssid` (string): SSID of Wi-Fi network.
-    - `authentication` [(Authentication)](../Network/#authentication): Security details for the network.
+    - `authentication` [(Authentication)](Network.md#authentication): Security details for the network.
 This field can be omitted if the network is unsecure.
-    - `connection_options` [(ConnectionOptions)](../Network/#connectionoptions): Optional parameters for static IP configuration.
+    - `connection_options` [(ConnectionOptions)](Network.md#connectionoptions): Optional parameters for static IP configuration.
 #### ConnectWifiResponse
   - *(No fields defined)*
 #### DriveRobotRequest
   - **Fields:**
-    - `twist` [(Twist)](../../common/Math/#twist): The desired max linear and angular velocity to travel.
+    - `twist` [(Twist)](../common/Math.md#twist): The desired max linear and angular velocity to travel.
 #### DriveRobotResponse
   - *(No fields defined)*
 #### GetSystemInfoRequest
   - *(No fields defined)*
 #### GetSystemInfoResponse
   - **Fields:**
-    - `system_info` [(SystemInfo)](../System/#systeminfo): Robot system details
+    - `system_info` [(SystemInfo)](System.md#systeminfo): Robot system details
 #### ListWifiConnectionsRequest
   - *(No fields defined)*
 #### ListWifiConnectionsResponse
   - **Fields:**
-    - `wifi_connections` [(WifiConnections)](../Network/#wificonnections): List of saved and available networks
+    - `wifi_connections` [(WifiConnections)](Network.md#wificonnections): List of saved and available networks
 #### SubscribeBatteryStatusRequest
   - *(No fields defined)*
 #### SubscribeBatteryStatusResponse
   - **Fields:**
-    - `metadata` [(EventMetadata)](../../common/Annotations/#eventmetadata): Timestamp and sequence number
-    - `battery_state` [(BatteryState)](../Status/#batterystate): Battery and charge information
+    - `metadata` [(EventMetadata)](../common/Annotations.md#eventmetadata): Timestamp and sequence number
+    - `battery_state` [(BatteryState)](Status.md#batterystate): Battery and charge information
 #### SubscribeNetworkStatusRequest
   - *(No fields defined)*
 #### SubscribeNetworkStatusResponse
   - **Fields:**
-    - `metadata` [(EventMetadata)](../../common/Annotations/#eventmetadata): Timestamp and sequence number
-    - `network_state` [(NetworkState)](../Network/#networkstate): Network status
+    - `metadata` [(EventMetadata)](../common/Annotations.md#eventmetadata): Timestamp and sequence number
+    - `network_state` [(NetworkState)](Network.md#networkstate): Network status
 #### SubscribeOdometryStatusRequest
   - *(No fields defined)*
 #### SubscribeOdometryStatusResponse
   - **Fields:**
-    - `metadata` [(EventMetadata)](../../common/Annotations/#eventmetadata): Timestamp and sequence number
-    - `odometry_state` [(OdometryState)](../Status/#odometry_state): Current odometry information
+    - `metadata` [(EventMetadata)](../common/Annotations.md#eventmetadata): Timestamp and sequence number
+    - `odometry_state` [(OdometryState)](Status.md#odometrystate): Current odometry information
 #### SubscribeRobotPoseRequest
   - *(No fields defined)*
 #### SubscribeRobotPoseResponse
   - **Fields:**
-    - `metadata` [(EventMetadata)](../../common/Annotations/#eventmetadata): Timestamp and sequence number
-    - `pose` [(Pose)](../Robot/#pose): Current robot position and orientation
+    - `metadata` [(EventMetadata)](../common/Annotations.md#eventmetadata): Timestamp and sequence number
+    - `pose` [(Pose)](Robot.md#pose): Current robot position and orientation
 

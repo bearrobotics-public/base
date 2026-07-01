@@ -7,7 +7,7 @@
     - `robot_id` (string): Unique robot id e.g. "pennybot-abc123"
     - `display_name` (string): Display name set for the robot e.g. "Sir V"
     - `locale_language` (string): IETF language tag represented in string e.g. "en-US"
-    - `wifi_info` [(WifiInfo)](../Network/#wifi_info): Various information of the wireless interface and connected Wi-Fi
+    - `wifi_info` [(WifiInfo)](Network.md#wifiinfo): Various information of the wireless interface and connected Wi-Fi
 network.
   - **Enums:**
 
